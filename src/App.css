@@ -1,30 +1,52 @@
-/* BORDERS FOR TEMPLATE */
-div {
-  border: solid;
-  border-width: 1px;
-}
-/* -------------------- */
-
 .App {
   display: flex;
   overflow: hidden;
+  height: 100%;
+  background-color: darkgray;
 }
 
+/* LAYOUT LEFT */
 .LayoutLeft {
   width: 30vw;
   padding: 16px;
 }
 
-.LayoutRight {
-  width: 70vw;
-  padding: 16px;
-  display: flex;
-}
-
 .LargeStats {
   height: 300px;
+  background-color: aqua;
 }
 
 .List {
-  height: 700px;
+  height: calc(100% - 300px);
+  background-color: beige;
+}
+
+/* LAYOUT RIGHT */
+.LayoutRight {
+  width: 70vw;
+  padding: 16px 16px 16px 0;
+  display: flex;
+  flex-wrap: wrap;
+  flex: 1;
+  align-items: stretch;
+}
+
+.LayoutRight * {
+  width: 50%;
+}
+
+.LocalStats {
+  background-color: blueviolet;
+}
+
+.HcdStats {
+  background-color: blue;
+}
+
+.CumulativeGraph {
+  background-color: chocolate;
+}
+
+.WeeklyGraph {
+  background-color: darkgoldenrod;
 }
