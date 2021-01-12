@@ -1,6 +1,30 @@
-.App {
-  text-align: center;
+/* BORDERS FOR TEMPLATE */
+div {
+  border: solid;
+  border-width: 1px;
 }
-h1 {
-  font-size: 12rem;
+/* -------------------- */
+
+.App {
+  display: flex;
+  overflow: hidden;
+}
+
+.LayoutLeft {
+  width: 30vw;
+  padding: 16px;
+}
+
+.LayoutRight {
+  width: 70vw;
+  padding: 16px;
+  display: flex;
+}
+
+.LargeStats {
+  height: 300px;
+}
+
+.List {
+  height: 700px;
 }
