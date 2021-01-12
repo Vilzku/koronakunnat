@@ -7,7 +7,7 @@ function LayoutLeft(props) {
     return (
         <div className="LayoutLeft">
             <LargeStats />
-            <List />
+            <List cityList={props.cityList}/>
         </div>
     );
 }

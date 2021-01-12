@@ -17,8 +17,25 @@
 }
 
 .List {
-  height: calc(100% - 300px);
+  height: calc(100% - 332px);
+  padding: 16px;
   background-color: beige;
+  overflow-y: auto;
+}
+
+.List .item {
+  list-style: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.List .item:hover {
+  color: red;
+  transition: all 0.25s ease-out;
+}
+
+.List .cases {
+  float: right;
 }
 
 /* LAYOUT RIGHT */
