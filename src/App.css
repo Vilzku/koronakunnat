@@ -12,13 +12,13 @@
 
 .LargeStats {
   height: 300px;
-  background-color: aqua;
+  background-color: rgb(107, 107, 107);
 }
 
 .List {
   height: calc(100% - 332px);
   padding: 16px;
-  background-color: beige;
+  background-color: rgb(168, 168, 168);
   overflow-y: auto;
 }
 
@@ -53,17 +53,17 @@
 }
 
 .LocalStats {
-  background-color: blueviolet;
+  background-color: rgb(235, 235, 235);;
 }
 
 .HcdStats {
-  background-color: blue;
+  background-color: rgb(221, 221, 221);;
 }
 
 .CumulativeGraph {
-  background-color: chocolate;
+  background-color: rgb(226, 226, 226);;
 }
 
 .WeeklyGraph {
-  background-color: darkgoldenrod;
+  background-color: rgb(241, 241, 241);;
 }
