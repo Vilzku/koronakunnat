@@ -10,19 +10,24 @@ function App() {
   const [cityList, setCityList] = useState([]);
   const [selectedCity, setSelectedCity] = useState(null);
 
-  let selectCity = () => {
-    setSelectedCity(fetchLocalData());
+  function selectCity() {
+    fetchLocalData().then(data => {
+      setSelectedCity(data);
+      console.log("selectCity(): " + data.city + " ladattu");
+    })
   }
 
   useEffect( () => {
-    setCityList(fetchCityData());
-    selectCity(); /* Testaamista varten */
+    fetchCityData().then(data => {
+      setCityList(data);
+    })
   }, []);
 
 
   return (
     <div className="App">
-      <LayoutLeft cityList={cityList} />
+      <LayoutLeft cityList={cityList} onButtonClicked={selectCity
+        /*Testaamista varten*/} />
       <LayoutRight selectedCity={selectedCity}/>
     </div>
   );

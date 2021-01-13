@@ -7,8 +7,7 @@
 
 /* LAYOUT LEFT */
 .LayoutLeft {
-  width: 30vw;
-  padding: 16px;
+  width: 20vw;
 }
 
 .LargeStats {
@@ -25,8 +24,10 @@
 
 .List .item {
   list-style: none;
-  font-size: 1.5rem;
+  font-size: 1.1rem;
+  padding: 16px 0;
   cursor: pointer;
+  border-bottom: 1px solid #262626;
 }
 
 .List .item:hover {
@@ -41,7 +42,6 @@
 /* LAYOUT RIGHT */
 .LayoutRight {
   width: 70vw;
-  padding: 16px 16px 16px 0;
   display: flex;
   flex-wrap: wrap;
   flex: 1;

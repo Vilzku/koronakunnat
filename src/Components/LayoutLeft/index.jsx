@@ -6,7 +6,8 @@ import List from './List.jsx';
 function LayoutLeft(props) {
     return (
         <div className="LayoutLeft">
-            <LargeStats />
+            <LargeStats onButtonClicked={ props.onButtonClicked
+                /*Testaamista varten*/}/>
             <List cityList={props.cityList}/>
         </div>
     );
