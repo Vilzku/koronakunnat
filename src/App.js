@@ -3,12 +3,12 @@ import React, { useEffect, useState } from 'react';
 import { fetchCityData, fetchLocalData } from './thl_api.js';
 
 import './App.css';
-import LayoutLeft from './LayoutLeft.jsx';
-import LayoutRight from './LayoutRight.jsx';
+import LayoutLeft from './Components/LayoutLeft';
+import LayoutRight from './Components/LayoutRight';
 
 function App() {
   const [cityList, setCityList] = useState([]);
-  const [selectedCity, setSelectedCity] = useState();
+  const [selectedCity, setSelectedCity] = useState(null);
 
   let selectCity = () => {
     setSelectedCity(fetchLocalData());

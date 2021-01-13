@@ -2,8 +2,7 @@
 
 
 export let fetchCityData = () => {
-    /* TODO: Fetch toimii, mutta List.jsx ei osaa aina renderöidä listaa */
-    /* TODO: Crashaa joskus tyyliin unexpected end of JSON file */
+    /* TODO: Fetchin hakema lista ei oo oikeesti lista huom. console.logit */
     
     let url = 'https://sampo.thl.fi/pivot/prod/fi/epirapo/covid19case/fact_epirapo_covid19case.json?row=hcdmunicipality2020-445043&column=dateweek20200101-509030'
 
@@ -12,13 +11,13 @@ export let fetchCityData = () => {
     fetch(url)
       .then(response => {
         response.json().then(data => {
-        let areas = data.dataset.dimension.hcdmunicipality2020.category.label;
-          for(let k in areas) {
+        let citylist = data.dataset.dimension.hcdmunicipality2020.category.label;
+          for(let k in citylist) {
             list.push({
               key: k,
-              name: areas[k],
+              name: citylist[k],
               cases: 0
-            })
+            });
           }
 
         })
@@ -30,8 +29,17 @@ export let fetchCityData = () => {
       {key: 123458, name: 'Imatra', cases: 22},
       {key: 123459, name: 'Kittilä', cases: 45},
       {key: 123450, name: 'lol', cases: 22},
+      {key: 124456, name: 'Tohmajärvi', cases: 0},
+      {key: 124457, name: 'Lappeenranta', cases: 45},
+      {key: 124458, name: 'Imatra', cases: 22},
+      {key: 124459, name: 'Kittilä', cases: 45},
+      {key: 124450, name: 'lol', cases: 22}
     ]
 
+    console.log(list);
+    console.log(testlist);
+    console.log(list[0]); /* undefined */
+    
     return testlist;
   }
 
@@ -48,7 +56,6 @@ export let fetchCityData = () => {
     .then(response => {
       response.json().then(data => {
       let caseslist = data.dataset.value;
-      console.log(caseslist);
         for(let k in caseslist) {
           list.push({
             key: k,
@@ -60,6 +67,7 @@ export let fetchCityData = () => {
 
     let data =
     {
+      key: 445286,
       city: 'Lappeenranta',
       weeklyCases: list
     }
