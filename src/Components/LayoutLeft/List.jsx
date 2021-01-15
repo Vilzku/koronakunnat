@@ -5,11 +5,18 @@ import { faSpinner } from '@fortawesome/free-solid-svg-icons'
 function List(props) {
     const [filter, setFilter] = React.useState("");
 
-    if(props.cityList.length === 0) {
-        return <FontAwesomeIcon icon={faSpinner} className="LoadIcon" />
+    let cityList = props.cityList;
+
+    // Loading icon
+    if(cityList.length === 0) {
+        return (
+            <div className="List">
+                <FontAwesomeIcon icon={faSpinner} className="LoadIcon" />
+            </div>
+        );
     }
 
-    let cityList = props.cityList;
+    // Search filter
     if(filter.length > 0) {
         cityList = cityList.filter(city => city.name.toLowerCase().indexOf(filter.toLowerCase()) !== -1)
     }
@@ -21,16 +28,18 @@ function List(props) {
     return (
         <div className="List">
             <input value={filter} onChange={onFilterChange} placeholder="Haku"></input>
-            { cityList.map(city => {
-                return (
-                <li
-                    className='item'
-                    key={ city.key }
-                    onClick={ () => props.onButtonClicked(city.key) }
-                >
-                { city.name }<span>{ city.cases }</span>
-                </li>)
-            }) }
+            <div className="list-items">
+                { cityList.map(city => {
+                    return (
+                    <li
+                        className='item'
+                        key={ city.key }
+                        onClick={ () => props.onButtonClicked(city.key) }
+                    >
+                    { city.name }<span>{ city.cases }</span>
+                    </li>)
+                }) }
+            </div>
         </div>
     );
 }

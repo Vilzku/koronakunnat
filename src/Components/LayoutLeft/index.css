@@ -1,6 +1,17 @@
+/******************************************************************************/
+
+.LayoutLeft {
+  width: 20vw;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+}
+
+/******************************************************************************/
+
 .LargeStats {
   background-color: rgb(107, 107, 107);
-  height: 250px;
+  flex-shrink: 0;
   display: grid;
   padding: 1rem;
 }
@@ -13,17 +24,21 @@
   font-size: 3rem;
 }
 
+/******************************************************************************/
+
 .List {
-  height: calc(100vh - 18.625rem);
-  padding: 16px;
   background-color: rgb(168, 168, 168);
   overflow-y: auto;
+}
+
+.List .list-items {
+  margin: 0 1rem 1rem 1rem;
 }
 
 .List .item {
   list-style: none;
   font-size: 1.1rem;
-  padding: 16px 0;
+  padding: 1rem 0;
   cursor: pointer;
   border-bottom: 1px solid #262626;
 }
@@ -37,12 +52,12 @@
   float: right;
 }
 
-.LoadIcon {
-  width: 32px;
-  margin: auto auto;
+input {
+  position: sticky;
+  top: 0.5rem;
+  width: calc(100% - 2.2rem);
+  margin: 0.5rem 0.5rem 0 0.5rem;
+  padding: 0.5rem;
 }
 
-input {
-  width: 95%;
-  padding: 8px;
-}
+/******************************************************************************/

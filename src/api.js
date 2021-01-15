@@ -98,10 +98,6 @@ export function fetchLocalData(id, hcdId, noRetry) {
   
     const url = 'https://sampo.thl.fi/pivot/prod/fi/epirapo/covid19case/fact_epirapo_covid19case.json?row=hcdmunicipality2020-' + hcdId  + '&column=dateweek20200101-509030'
 
-    let localData = {
-      key: id
-    }
-
     fetch(url)
     .then(response => {
       response.json()

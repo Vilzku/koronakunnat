@@ -1,29 +1,56 @@
+/******************************************************************************/
+
+.LayoutRight {
+  width: 70vw;
+  display: flex;
+  flex-wrap: wrap;
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/******************************************************************************/
+
 .LocalStats {
   width: 50%;
   height: 50%;
+  min-width: 500px; /* ghettoviritelmä x 4, korjaa media queryllä */
   background-color: rgb(235, 235, 235);
 }
+
+/******************************************************************************/
 
 .HcdStats {
   width: 50%;
   height: 50%;
+  min-width: 500px;
   background-color: rgb(221, 221, 221);
 }
+
+/******************************************************************************/
 
 .CumulativeGraph {
   width: 50%;
   height: 50%;
-  /*background-color: rgb(226, 226, 226);*/
+  min-width: 500px;
+  background-color: rgb(226, 226, 226);
 }
+
+/******************************************************************************/
 
 .WeeklyGraph {
   width: 50%;
   height: 50%;
+  min-width: 500px;
   background-color: rgb(241, 241, 241);
 }
+
+/******************************************************************************/
 
 .canvasjs-react-chart-container-1,
 .canvasjs-chart-container {
   height: 100%;
   width: 100%;
 }
+
+/******************************************************************************/

@@ -1,11 +1,21 @@
 import React from 'react';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSpinner } from '@fortawesome/free-solid-svg-icons'
+
 function LargeStats(props) {
 
     let hcdList = props.hcdList;
     let vaccinations = props.vaccinations;
-    console.log(hcdList)
 
+    // Loading icon
+    if(hcdList.length === 0 || vaccinations.length === 0) {
+        return (
+            <div className="LargeStats">
+                <FontAwesomeIcon icon={faSpinner} className="LoadIcon" />
+            </div>
+        );
+    }
 
     return (
         <div className="LargeStats">

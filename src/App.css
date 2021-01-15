@@ -2,24 +2,13 @@
 @import "./Components/LayoutRight/index.css";
 
 .App {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  bottom: 3rem;
   display: flex;
   overflow: hidden;
-  height: calc(100vh - 3rem);
 }
 
-/* LAYOUT LEFT */
-.LayoutLeft {
-  width: 20vw;
-  min-width: 300px;
-  height: calc(100vh - 3rem);
-}
-
-/* LAYOUT RIGHT */
-.LayoutRight {
-  width: 70vw;
-  height: calc(100vh - 3rem);
-  display: flex;
-  flex-wrap: wrap;
-  flex: 1;
-  align-items: stretch;
+.LoadIcon {
 }

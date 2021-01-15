@@ -22,17 +22,17 @@ function App() {
     const ALL_AREAS_ID = '445222'
 
     // Fetch all hcd
-    fetchAreaData(ALL_AREAS_ID).then(hcddata => {
-      setHcdList(hcddata);
+    fetchAreaData(ALL_AREAS_ID).then(hcdData => {
+      setHcdList(hcdData);
       
       // Iterate through hcd and fetch all cities
       let temp_list = []
-      for(let i=0; i<hcddata.length; i++) {
-        if(hcddata[i].key === ALL_AREAS_ID) {
+      for(let i=0; i<hcdData.length; i++) {
+        if(hcdData[i].key === ALL_AREAS_ID) {
           continue;
         }
-        fetchAreaData(hcddata[i].key).then(citydata => {
-          temp_list = [...temp_list, ...citydata]
+        fetchAreaData(hcdData[i].key).then(cityData => {
+          temp_list = [...temp_list, ...cityData]
           temp_list.sort((a, b) => (a.name > b.name) ? 1 : -1)
           setCityList(temp_list);
         });
