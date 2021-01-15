@@ -16,7 +16,6 @@ function App() {
   const [selectedCity, setSelectedCity] = useState(null);
   const [vaccinations, setVaccinations] = useState([]);
 
-
   function getAreas() {
     // Root element id that contains all hcd
     const ALL_AREAS_ID = '445222'
@@ -40,7 +39,6 @@ function App() {
     });
   }
 
-
   // Fetch data for specific city
   function selectCity(id) {
     cityList.forEach(city => {
@@ -54,14 +52,12 @@ function App() {
     
   }
 
-
   useEffect(() => {
     getAreas();
     fetchVaccinationData().then(data => {
       setVaccinations(data);
     }); 
   }, []);
-
 
   return (
     <div className="App">
