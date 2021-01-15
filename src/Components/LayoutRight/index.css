@@ -1,19 +1,29 @@
-.LayoutRight * {
-  width: 50%;
-}
-
 .LocalStats {
+  width: 50%;
+  height: 50%;
   background-color: rgb(235, 235, 235);
 }
 
 .HcdStats {
+  width: 50%;
+  height: 50%;
   background-color: rgb(221, 221, 221);
 }
 
 .CumulativeGraph {
-  background-color: rgb(226, 226, 226);
+  width: 50%;
+  height: 50%;
+  /*background-color: rgb(226, 226, 226);*/
 }
 
 .WeeklyGraph {
+  width: 50%;
+  height: 50%;
   background-color: rgb(241, 241, 241);
+}
+
+.canvasjs-react-chart-container-1,
+.canvasjs-chart-container {
+  height: 100%;
+  width: 100%;
 }
