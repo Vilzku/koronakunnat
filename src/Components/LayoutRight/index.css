@@ -1,0 +1,19 @@
+.LayoutRight * {
+  width: 50%;
+}
+
+.LocalStats {
+  background-color: rgb(235, 235, 235);
+}
+
+.HcdStats {
+  background-color: rgb(221, 221, 221);
+}
+
+.CumulativeGraph {
+  background-color: rgb(226, 226, 226);
+}
+
+.WeeklyGraph {
+  background-color: rgb(241, 241, 241);
+}

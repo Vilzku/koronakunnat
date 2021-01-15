@@ -6,9 +6,11 @@ import List from './List.jsx';
 function LayoutLeft(props) {
     return (
         <div className="LayoutLeft">
-            <LargeStats onButtonClicked={ props.onButtonClicked
-                /*Testaamista varten*/}/>
-            <List cityList={props.cityList}/>
+            <LargeStats />
+            <List
+                cityList={props.cityList}
+                onButtonClicked={props.onButtonClicked}
+            />
         </div>
     );
 }

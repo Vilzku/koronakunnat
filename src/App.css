@@ -1,3 +1,6 @@
+@import "./Components/LayoutLeft/index.css";
+@import "./Components/LayoutRight/index.css";
+
 .App {
   display: flex;
   overflow: hidden;
@@ -10,35 +13,6 @@
   width: 20vw;
 }
 
-.LargeStats {
-  height: 300px;
-  background-color: rgb(107, 107, 107);
-}
-
-.List {
-  height: calc(100% - 332px);
-  padding: 16px;
-  background-color: rgb(168, 168, 168);
-  overflow-y: auto;
-}
-
-.List .item {
-  list-style: none;
-  font-size: 1.1rem;
-  padding: 16px 0;
-  cursor: pointer;
-  border-bottom: 1px solid #262626;
-}
-
-.List .item:hover {
-  color: red;
-  transition: all 0.25s ease-out;
-}
-
-.List span {
-  float: right;
-}
-
 /* LAYOUT RIGHT */
 .LayoutRight {
   width: 70vw;
@@ -46,24 +20,4 @@
   flex-wrap: wrap;
   flex: 1;
   align-items: stretch;
-}
-
-.LayoutRight * {
-  width: 50%;
-}
-
-.LocalStats {
-  background-color: rgb(235, 235, 235);;
-}
-
-.HcdStats {
-  background-color: rgb(221, 221, 221);;
-}
-
-.CumulativeGraph {
-  background-color: rgb(226, 226, 226);;
-}
-
-.WeeklyGraph {
-  background-color: rgb(241, 241, 241);;
 }

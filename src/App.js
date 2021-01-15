@@ -41,11 +41,16 @@ function App() {
   }
 
 
-  function selectCity() {
-    fetchLocalData().then(data => {
-      setSelectedCity(data);
-      console.log("App:selectCity: " + data.city + " loaded");
-    })
+  function selectCity(id) {
+    cityList.forEach(city => {
+      if(city.key === id) {
+        fetchLocalData(city.key, city.hcd).then(data => {
+          setSelectedCity(data);
+        })
+      }
+    });
+
+    
   }
 
 
@@ -56,8 +61,7 @@ function App() {
 
   return (
     <div className="App">
-      <LayoutLeft cityList={cityList} onButtonClicked={selectCity
-        /*Testaamista varten*/} />
+      <LayoutLeft cityList={cityList} onButtonClicked={selectCity} />
       <LayoutRight selectedCity={selectedCity}/>
     </div>
   );

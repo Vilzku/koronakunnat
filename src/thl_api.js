@@ -3,7 +3,15 @@
 export function fetchAreaData(id, noRetry) {
 
 /*
-  Returns a promise with a list of objects { key: x, name: y, cases: z }
+  Returns a promise with a list of objects
+  { 
+    key: "445286", 
+    name: "Lappeenranta", 
+    hcd: "445043", 
+    cases: 22
+  }
+  NOTE:
+    When fetching hcds the 'hcd' tag contains 'All areas'
 */
 
   return new Promise(resolve => {
@@ -25,8 +33,11 @@ export function fetchAreaData(id, noRetry) {
               list.push({
                 key: k,
                 name: areas[k],
+                hcd: id
               });
             }
+
+            let objToDelete = null;
 
             for(let i=0; i<list.length; i++) {
               let key = list[i].key
@@ -35,13 +46,13 @@ export function fetchAreaData(id, noRetry) {
               let x = positions[key] + 1;
               let value = data.dataset.value[x*106-1];
               list[i]['cases'] = value;
-            }
 
-            /*
-              TODO:
-              Pittäis poistaa se millä tätä alunperinki haetaan
-              Tuolla listassa ei nimittäin pitäis olla SHP
-            */
+              // Delete the areas that was used for search (id)
+              if(key === id) {
+                objToDelete = list[i];
+              }
+            }
+            list = list.filter(item => item !== objToDelete);
 
             console.log("thl_api:fetchAreaData: " + id + " loaded")
             return resolve(list);
@@ -65,43 +76,74 @@ export function fetchAreaData(id, noRetry) {
 
 
 
-export function fetchLocalData() {
+export function fetchLocalData(id, hcdId, noRetry) {
 
 /*
   Returns a promise with an object
-  { key: x, city: y, weeklyCases: [{ 0-105: value }] }
-  0-105 reflects to weeks from the beginning of 2020
+  {
+    area: "Lappeenranta",
+    hcd: "Etelä-Karjalan SHP",
+    key: "445286",
+    weeklyCases: [0, 0, 22, 45, ..., undefined, undefined],
+    weeklyHcdCases: [0, 0, 22, 45, ..., undefined, undefined]
+  }
+  NOTE:
+    Lists contain all weeks from 1.1.2020 to 31.12.2021
+    Last items (index 105) are total cases
+    2020 had 53 weeks instead of 52
+    Undefined items are from the future
 */
-
-    /*
-      TODO:
-      Valittu kunta hardcodattu tällä hetkellä testaamista varten ja muutenki vähemmän viimeistelty ku tuo ylempi funktio
-    */
 
   return new Promise(resolve => {
   
-    let url = 'https://sampo.thl.fi/pivot/prod/fi/epirapo/covid19case/fact_epirapo_covid19case.json?row=hcdmunicipality2020-445286&column=dateweek20200101-509030'
+    const url = 'https://sampo.thl.fi/pivot/prod/fi/epirapo/covid19case/fact_epirapo_covid19case.json?row=hcdmunicipality2020-' + hcdId  + '&column=dateweek20200101-509030'
+
+    let localData = {
+      key: id
+    }
 
     fetch(url)
     .then(response => {
       response.json()
         .then(data => {
-          let localData =
-          {
-            key: 445286,
-            city: 'Lappeenranta',
-            weeklyCases: data.dataset.value
+
+          // Positions is used for determining the "row" of the area in thl API
+          let cityPos = data.dataset.dimension.hcdmunicipality2020.category.index[id];
+          let hcdPos = data.dataset.dimension.hcdmunicipality2020.category.index[hcdId];
+
+          // Add necessary data
+          let localData = {
+            key: id,
+            hcd: hcdId
           }
+
+          localData['area'] = data.dataset.dimension.hcdmunicipality2020.category.label[id];
+          localData['hcd'] = data.dataset.dimension.hcdmunicipality2020.category.label[hcdId];
+
+          localData['weeklyCases'] = [];
+          localData['weeklyHcdCases'] = [];
+
+          for(let i=0; i<106; i++) {
+            localData['weeklyCases'].push(data.dataset.value[i+106*cityPos]);
+            localData['weeklyHcdCases'].push(data.dataset.value[i+106*hcdPos]);
+          }
+
+          console.log("thl_api:fetchLocalData: " + localData.area + " loaded");
           return resolve(localData);
-        })
+
+        }) // Try again if error is catched
         .catch(err => {
           console.log(err);
-          return [{key: "000000", name: "Jotain meni pieleen (-103)", weeklyCases: -1}]
+          setTimeout(() => { 
+            return (!noRetry ? fetchLocalData(id, hcdId, true) : []);
+          }, 1000);
         })
     })
     .catch(err => {
       console.log(err);
-      return [{key: "000000", name: "Jotain meni pieleen (-104)", weeklyCases: -1}]
+      setTimeout(() => {
+        return (!noRetry ? fetchLocalData(id, hcdId, true) : []);
+      }, 1000);
     })
   })
 }

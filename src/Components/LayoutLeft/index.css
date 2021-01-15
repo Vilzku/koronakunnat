@@ -1,0 +1,38 @@
+.LargeStats {
+  height: 300px;
+  background-color: rgb(107, 107, 107);
+}
+
+.List {
+  height: calc(100% - 332px);
+  padding: 16px;
+  background-color: rgb(168, 168, 168);
+  overflow-y: auto;
+}
+
+.List .item {
+  list-style: none;
+  font-size: 1.1rem;
+  padding: 16px 0;
+  cursor: pointer;
+  border-bottom: 1px solid #262626;
+}
+
+.List .item:hover {
+  color: red;
+  transition: all 0.25s ease-out;
+}
+
+.List span {
+  float: right;
+}
+
+.LoadIcon {
+  width: 32px;
+  margin: auto auto;
+}
+
+input {
+  width: 95%;
+  padding: 8px;
+}
