@@ -4,17 +4,20 @@
 .App {
   display: flex;
   overflow: hidden;
-  height: 100%;
+  height: calc(100vh - 3rem);
 }
 
 /* LAYOUT LEFT */
 .LayoutLeft {
   width: 20vw;
+  min-width: 300px;
+  height: calc(100vh - 3rem);
 }
 
 /* LAYOUT RIGHT */
 .LayoutRight {
   width: 70vw;
+  height: calc(100vh - 3rem);
   display: flex;
   flex-wrap: wrap;
   flex: 1;

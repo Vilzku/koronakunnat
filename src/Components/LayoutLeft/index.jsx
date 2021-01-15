@@ -6,7 +6,9 @@ import List from './List.jsx';
 function LayoutLeft(props) {
     return (
         <div className="LayoutLeft">
-            <LargeStats />
+            <LargeStats 
+                hcdList={props.hcdList}
+                vaccinations={props.vaccinations}/>
             <List
                 cityList={props.cityList}
                 onButtonClicked={props.onButtonClicked}

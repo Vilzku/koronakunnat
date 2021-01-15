@@ -1,10 +1,20 @@
 .LargeStats {
-  height: 300px;
   background-color: rgb(107, 107, 107);
+  height: 250px;
+  display: grid;
+  padding: 1rem;
+}
+
+.LargeStats * {
+  text-align: center;
+}
+
+.LargeStats .number {
+  font-size: 3rem;
 }
 
 .List {
-  height: calc(100% - 332px);
+  height: calc(100vh - 18.625rem);
   padding: 16px;
   background-color: rgb(168, 168, 168);
   overflow-y: auto;

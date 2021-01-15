@@ -48,7 +48,7 @@ export function fetchAreaData(id, noRetry) {
               list[i]['cases'] = value;
 
               // Delete the areas that was used for search (id)
-              if(key === id) {
+              if(key === id && id !== '445222') {
                 objToDelete = list[i];
               }
             }
@@ -147,3 +147,50 @@ export function fetchLocalData(id, hcdId, noRetry) {
     })
   })
 }
+
+
+
+export function fetchVaccinationData(noRetry) {
+
+  /*
+    Returns a promise with list of objects
+    {
+      date: "2021-01-15T11:44:00.000Z",
+      area: "Finland",
+      shots: "22"
+    }
+  */
+  
+    return new Promise(resolve => {
+    
+      const url = 'https://w3qa5ydb4l.execute-api.eu-west-1.amazonaws.com/prod/finnishVaccinationData'
+      let list = [];
+  
+      fetch(url)
+      .then(response => {
+        response.json()
+          .then(data => {
+
+            for(let i=0; i<6; i++) {
+              list.push(data.pop());
+            }
+            
+            console.log("thl_api:fetchVaccinationData: Vaccinations loaded");
+            return resolve(list);
+  
+          }) // Try again if error is catched
+          .catch(err => {
+            console.log(err);
+            setTimeout(() => { 
+              return (!noRetry ? fetchVaccinationData(true) : []);
+            }, 1000);
+          })
+      })
+      .catch(err => {
+        console.log(err);
+        setTimeout(() => {
+          return (!noRetry ? fetchVaccinationData(true) : []);
+        }, 1000);
+      })
+    })
+  }

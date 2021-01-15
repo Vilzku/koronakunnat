@@ -1,6 +1,6 @@
 
 import React, { useEffect, useState } from 'react';
-import { fetchAreaData, fetchLocalData } from './thl_api.js';
+import { fetchAreaData, fetchLocalData, fetchVaccinationData } from './api.js';
 
 import './App.css';
 import LayoutLeft from './Components/LayoutLeft';
@@ -14,10 +14,10 @@ function App() {
   const [hcdList, setHcdList] = useState([]);
   const [cityList, setCityList] = useState([]);
   const [selectedCity, setSelectedCity] = useState(null);
+  const [vaccinations, setVaccinations] = useState([]);
 
 
   function getAreas() {
-
     // Root element id that contains all hcd
     const ALL_AREAS_ID = '445222'
 
@@ -41,6 +41,7 @@ function App() {
   }
 
 
+  // Fetch data for specific city
   function selectCity(id) {
     cityList.forEach(city => {
       if(city.key === id) {
@@ -55,14 +56,22 @@ function App() {
 
 
   useEffect(() => {
-    getAreas();    
+    getAreas();
+    fetchVaccinationData().then(data => {
+      setVaccinations(data);
+    }); 
   }, []);
 
 
   return (
     <div className="App">
-      <LayoutLeft cityList={cityList} onButtonClicked={selectCity} />
-      <LayoutRight selectedCity={selectedCity}/>
+      <LayoutLeft
+        cityList={cityList}
+        onButtonClicked={selectCity}
+        hcdList={hcdList}
+        vaccinations={vaccinations}/>
+      <LayoutRight
+      selectedCity={selectedCity}/>
     </div>
   );
 }
