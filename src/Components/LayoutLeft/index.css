@@ -26,15 +26,15 @@
 }
 
 .LargeStats .tooltip {
-  position: absolute;
-  transform: translate(66px, -36px);
-  display: inline-block;
+  display: inline;
   border-bottom: 1px dotted black;
+  cursor: help;
 }
 
 .LargeStats .tooltip .tooltiptext {
   visibility: hidden;
   position: absolute;
+  transform: translateY(2.5rem);
   z-index: 1;
   width: 200px;
   background-color: #262626;

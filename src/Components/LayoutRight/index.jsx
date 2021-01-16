@@ -4,19 +4,43 @@ import LocalStats from './LocalStats.jsx';
 import HcdStats from './HcdStats.jsx';
 import CumulativeGraph from './CumulativeGraph.jsx';
 import WeeklyGraph from './WeeklyGraph.jsx';
+import MainPage from './MainPage.jsx';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faInfoCircle, faTimes } from '@fortawesome/free-solid-svg-icons';
 
 function LayoutRight(props) {
 
-    /* props.selectedCity */
+    // Homepage
+    if(props.selectedCity === null) {
+        return (
+            <div className="LayoutRight">
+                <FontAwesomeIcon
+                    icon={faInfoCircle}
+                    size="2x"
+                    className="helpIcon"
+                    onClick={ () => props.onButtonClicked(null) }/>
+                <MainPage />
+            </div>
+        );
 
-    return (
-        <div className="LayoutRight">
-            <LocalStats />
-            <HcdStats />
-            <CumulativeGraph />
-            <WeeklyGraph />
-        </div>
-    );
+    // Selected city information
+    } else {
+        return (
+            <div className="LayoutRight">
+                <FontAwesomeIcon
+                    icon={faTimes}
+                    size="2x"
+                    className="closeIcon"
+                    onClick={ () => props.onButtonClicked(null) }/>
+                <LocalStats />
+                <HcdStats />
+                <CumulativeGraph />
+                <WeeklyGraph />
+            </div>
+        );
+    }
+
+    
 }
 
 export default LayoutRight;

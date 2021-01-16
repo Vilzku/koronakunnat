@@ -41,6 +41,7 @@ function App() {
 
   // Fetch data for specific city
   function selectCity(id) {
+    id === null ? setSelectedCity(null) :
     cityList.forEach(city => {
       if(city.key === id) {
         fetchLocalData(city.key, city.hcd).then(data => {
@@ -48,8 +49,6 @@ function App() {
         })
       }
     });
-
-    
   }
 
   useEffect(() => {
@@ -67,7 +66,8 @@ function App() {
         hcdList={hcdList}
         vaccinations={vaccinations}/>
       <LayoutRight
-      selectedCity={selectedCity}/>
+      selectedCity={selectedCity}
+      onButtonClicked={selectCity}/>
     </div>
   );
 }

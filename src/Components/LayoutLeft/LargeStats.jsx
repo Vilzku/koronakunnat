@@ -37,10 +37,10 @@ function LargeStats(props) {
 
             <div className="vaccinations">
             <span className="number">{ vaccinations.length > 0 ? vaccinations[0].shots : "--"}</span>
-            <div className="title">Rokotukset</div>
             <div className="tooltip">?
                 <span className="tooltiptext">Helsingin Sanomat { date }</span>
             </div>
+            <div className="title">Rokotukset</div>
             </div>
 
         </div>
