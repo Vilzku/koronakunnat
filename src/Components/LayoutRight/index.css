@@ -22,18 +22,31 @@
 
 .MainPage {
   background: rgb(233, 233, 233);
-  width: 100%;
-  height: 100%;
+  flex: 1;
   display: grid;
   grid-template-areas:
-    "title map"
-    "lower map";
-  grid-template-columns: 50% 50%;
+    "text map"
+    "x legend";
+  grid-template-columns: 1fr 1fr;
+}
+
+.MainPage .text {
+  grid-area: text;
+  margin: auto 0 auto auto;
+}
+
+.MainPage .text h1 {
+  font-size: 6rem;
 }
 
 .MainPage .Map {
-  height: inherit;
   grid-area: map;
+  height: 87vh;
+  margin: auto auto auto 0;
+}
+
+.MainPage .Map * {
+  transition: all 0.3s ease-in-out;
 }
 
 .MainPage .Map path:hover,
@@ -41,24 +54,38 @@
   opacity: 80%;
 }
 
-.MainPage .caseClass1 {
+.MainPage .caseClass0 {
   fill: #ffffd4;
+  color: #ffffd4;
 }
 
 .MainPage .caseClass10 {
   fill: #fed98e;
+  color: #fed98e;
 }
 
 .MainPage .caseClass25 {
   fill: #fe9929;
+  color: #fe9929;
 }
 
 .MainPage .caseClass100 {
   fill: #d95f0e;
+  color: #d95f0e;
 }
 
 .MainPage .caseClass500 {
   fill: #993404;
+  color: #993404;
+}
+
+.MainPage .legend {
+  grid-area: legend;
+  margin-bottom: 0.5rem;
+}
+
+.MainPage .legend * {
+  margin: 0 0.25rem 0.25rem 1rem;
 }
 
 /******************************************************************************/
@@ -66,7 +93,6 @@
 .LocalStats {
   width: 50%;
   height: 50%;
-  min-width: 500px; /* ghettoviritelmä x 4, korjaa media queryllä */
   background-color: rgb(235, 235, 235);
 }
 
@@ -75,7 +101,6 @@
 .HcdStats {
   width: 50%;
   height: 50%;
-  min-width: 500px;
   background-color: rgb(221, 221, 221);
 }
 
@@ -84,7 +109,6 @@
 .CumulativeGraph {
   width: 50%;
   height: 50%;
-  min-width: 500px;
   background-color: rgb(226, 226, 226);
 }
 
@@ -93,8 +117,43 @@
 .WeeklyGraph {
   width: 50%;
   height: 50%;
-  min-width: 500px;
   background-color: rgb(241, 241, 241);
 }
 
 /******************************************************************************/
+
+@media only screen and (max-width: 1239px) {
+  .LayoutRight .closeIcon,
+  .LayoutRight .helpIcon {
+    right: 1.5rem;
+  }
+
+  .MainPage {
+    grid-template-areas:
+      "text"
+      "map"
+      "legend";
+    grid-template-columns: 1fr;
+  }
+
+  .MainPage .text,
+  .MainPage .Map {
+    margin: auto;
+  }
+
+  .MainPage .legend {
+    text-align: center;
+  }
+
+  .LayoutRight {
+    flex-flow: column;
+  }
+
+  .LocalStats,
+  .HcdStats,
+  .CumulativeGraph,
+  .WeeklyGraph {
+    width: 100%;
+    min-height: 400px; /* Fix this whenever there is content */
+  }
+}
