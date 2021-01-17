@@ -1,24 +1,23 @@
 
 import React, { useEffect, useState } from 'react';
-import { fetchAreaData, fetchLocalData, fetchVaccinationData } from './api.js';
+import { fetchAreaData, fetchLocalData, fetchVaccinationData, fetchPopulation } from './api.js';
 
 import './App.css';
 import LayoutLeft from './Components/LayoutLeft';
 import LayoutRight from './Components/LayoutRight';
 
-/*
-  'City' is considered as 'a municipality' in this context
-*/
 
 function App() {
   const [hcdList, setHcdList] = useState([]);
   const [cityList, setCityList] = useState([]);
   const [selectedCity, setSelectedCity] = useState(null);
+  const [selectedHcd, setSelectedHcd] = useState(null);
   const [vaccinations, setVaccinations] = useState([]);
+
+  const ALL_AREAS_ID = '445222'
 
   function getAreas() {
     // Root element id that contains all hcd
-    const ALL_AREAS_ID = '445222'
 
     // Fetch all hcd
     fetchAreaData(ALL_AREAS_ID).then(hcdData => {
@@ -47,6 +46,9 @@ function App() {
         fetchLocalData(city.key, city.hcd).then(data => {
           setSelectedCity(data);
         })
+        fetchLocalData(city.hcd, ALL_AREAS_ID).then(data => {
+          setSelectedHcd(data);
+        })
       }
     });
   }
@@ -66,8 +68,10 @@ function App() {
         hcdList={hcdList}
         vaccinations={vaccinations}/>
       <LayoutRight
-      selectedCity={selectedCity}
-      onButtonClicked={selectCity}/>
+        selectedCity={selectedCity}
+        selectedHcd={selectedHcd}
+        onButtonClicked={selectCity}
+        hcdList={hcdList}/>
     </div>
   );
 }

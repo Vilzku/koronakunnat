@@ -8,7 +8,7 @@ export function fetchAreaData(id, noRetry) {
     key: "445286", 
     name: "Lappeenranta", 
     hcd: "445043", 
-    cases: 22
+    cases: "22"
   }
   NOTE:
     When fetching hcds the 'hcd' tag contains 'All areas'
@@ -23,10 +23,10 @@ export function fetchAreaData(id, noRetry) {
       .then(response => {
         response.json()
           .then(data => {
-          let areas = data.dataset.dimension.hcdmunicipality2020.category.label;
+            let areas = data.dataset.dimension.hcdmunicipality2020.category.label;
 
-          // Positions is used for determining the "row" of the area in thl API
-          let positions = data.dataset.dimension.hcdmunicipality2020.category.index;
+            // Positions is used for determining the "row" of the area in thl API
+            let positions = data.dataset.dimension.hcdmunicipality2020.category.index;
       
             // Add each area to the list
             for(let k in areas) {
@@ -54,9 +54,9 @@ export function fetchAreaData(id, noRetry) {
             }
             list = list.filter(item => item !== objToDelete);
 
-            console.log("thl_api:fetchAreaData: " + id + " loaded")
+            console.log("api:fetchAreaData: " + id + " loaded")
             return resolve(list);
-            
+          
           }) // Try again if error is catched
           .catch(err => {
             console.log(err);
@@ -79,19 +79,19 @@ export function fetchAreaData(id, noRetry) {
 export function fetchLocalData(id, hcdId, noRetry) {
 
 /*
-  Returns a promise with an object
+  Returns a promise with an object, can also be used with HCD
   {
     area: "Lappeenranta",
     hcd: "Etelä-Karjalan SHP",
     key: "445286",
-    weeklyCases: [0, 0, 22, 45, ..., undefined, undefined],
-    weeklyHcdCases: [0, 0, 22, 45, ..., undefined, undefined]
+    weeklyCases: [0, 0, 22, 45, ..., null, null],
+    weeklyHcdCases: [0, 0, 22, 45, ..., null, null]
   }
   NOTE:
     Lists contain all weeks from 1.1.2020 to 31.12.2021
     Last items (index 105) are total cases
     2020 had 53 weeks instead of 52
-    Undefined items are from the future
+    null items are from the future
 */
 
   return new Promise(resolve => {
@@ -99,48 +99,48 @@ export function fetchLocalData(id, hcdId, noRetry) {
     const url = 'https://sampo.thl.fi/pivot/prod/fi/epirapo/covid19case/fact_epirapo_covid19case.json?row=hcdmunicipality2020-' + hcdId  + '&column=dateweek20200101-509030'
 
     fetch(url)
-    .then(response => {
-      response.json()
-        .then(data => {
+      .then(response => {
+        response.json()
+          .then(data => {
 
-          // Positions is used for determining the "row" of the area in thl API
-          let cityPos = data.dataset.dimension.hcdmunicipality2020.category.index[id];
-          let hcdPos = data.dataset.dimension.hcdmunicipality2020.category.index[hcdId];
+            // Positions is used for determining the "row" of the area in thl API
+            let cityPos = data.dataset.dimension.hcdmunicipality2020.category.index[id];
+            let hcdPos = data.dataset.dimension.hcdmunicipality2020.category.index[hcdId];
 
-          // Add necessary data
-          let localData = {
-            key: id,
-            hcd: hcdId
-          }
+            // Add necessary data
+            let localData = {
+              key: id,
+              hcd: hcdId
+            }
 
-          localData['area'] = data.dataset.dimension.hcdmunicipality2020.category.label[id];
-          localData['hcd'] = data.dataset.dimension.hcdmunicipality2020.category.label[hcdId];
+            localData['area'] = data.dataset.dimension.hcdmunicipality2020.category.label[id];
+            localData['hcd'] = data.dataset.dimension.hcdmunicipality2020.category.label[hcdId];
 
-          localData['weeklyCases'] = [];
-          localData['weeklyHcdCases'] = [];
+            localData['weeklyCases'] = [];
+            localData['weeklyHcdCases'] = [];
 
-          for(let i=0; i<106; i++) {
-            localData['weeklyCases'].push(data.dataset.value[i+106*cityPos]);
-            localData['weeklyHcdCases'].push(data.dataset.value[i+106*hcdPos]);
-          }
+            for(let i=0; i<106; i++) {
+              localData['weeklyCases'].push(data.dataset.value[i+106*cityPos]);
+              localData['weeklyHcdCases'].push(data.dataset.value[i+106*hcdPos]);
+            }
 
-          console.log("thl_api:fetchLocalData: " + localData.area + " loaded");
-          return resolve(localData);
+            console.log("api:fetchLocalData: " + localData.area + " loaded");
+            return resolve(localData);
 
-        }) // Try again if error is catched
-        .catch(err => {
-          console.log(err);
-          setTimeout(() => { 
-            return (!noRetry ? fetchLocalData(id, hcdId, true) : []);
-          }, 1000);
-        })
-    })
-    .catch(err => {
-      console.log(err);
-      setTimeout(() => {
-        return (!noRetry ? fetchLocalData(id, hcdId, true) : []);
-      }, 1000);
-    })
+          }) // Try again if error is catched
+          .catch(err => {
+            console.log(err);
+            setTimeout(() => { 
+              return (!noRetry ? fetchLocalData(id, hcdId, true) : null);
+            }, 1000);
+          })
+      })
+      .catch(err => {
+        console.log(err);
+        setTimeout(() => {
+          return (!noRetry ? fetchLocalData(id, hcdId, true) : null);
+        }, 1000);
+      })
   })
 }
 
@@ -171,7 +171,7 @@ export function fetchVaccinationData(noRetry) {
               list.push(data.pop());
             }
             
-            console.log("thl_api:fetchVaccinationData: Vaccinations loaded");
+            console.log("api:fetchVaccinationData: Vaccinations loaded");
             return resolve(list);
   
           }) // Try again if error is catched
@@ -188,5 +188,52 @@ export function fetchVaccinationData(noRetry) {
           return (!noRetry ? fetchVaccinationData(true) : []);
         }, 1000);
       })
-    })
+  })
+}
+
+
+export function fetchPopulation(area, noRetry) {
+
+/*
+  Returns a promise with an object with population added
+  Input 'area' must have a property 'key'
+  { 
+    x: y,
+    y: z, 
+    key: "123456",
+    population: "100000" <-- NEW
   }
+*/
+  
+  return new Promise(resolve => {
+  
+    const url = 'https://sampo.thl.fi/pivot/prod/fi/epirapo/covid19case/fact_epirapo_covid19case.json?row=hcdmunicipality2020-' + area['key'] + '&column=measure-445344'
+
+    fetch(url)
+      .then(response => {
+        response.json()
+          .then(data => {
+
+            let pos = data.dataset.dimension.hcdmunicipality2020.category.index[area['key']];
+
+            area['population'] = data.dataset.value[pos];
+          
+            console.log("api:fetchHcdPopulation: Population loaded")
+            return resolve(area);
+          
+          }) // Try again if error is catched
+          .catch(err => {
+            console.log(err);
+            setTimeout(() => { 
+              return (!noRetry ? fetchAreaData(area, true) : area);
+            }, 1000);
+          })
+      })
+      .catch(err => {
+        console.log(err);
+        setTimeout(() => {
+          return (!noRetry ? fetchAreaData(area, true) : area);
+        }, 1000);
+      })
+  })
+}

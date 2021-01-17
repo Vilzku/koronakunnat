@@ -19,7 +19,8 @@ function LayoutRight(props) {
                     size="2x"
                     className="helpIcon"
                     onClick={ () => props.onButtonClicked(null) }/>
-                <MainPage />
+                <MainPage
+                    hcdList={props.hcdList}/>
             </div>
         );
 

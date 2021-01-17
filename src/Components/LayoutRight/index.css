@@ -36,14 +36,29 @@
   grid-area: map;
 }
 
-.MainPage .Map path,
-.MainPage .Map polygon {
-  fill: rgb(82, 82, 82);
-}
-
 .MainPage .Map path:hover,
 .MainPage .Map polygon:hover {
-  fill: rgb(43, 43, 43);
+  opacity: 80%;
+}
+
+.MainPage .caseClass1 {
+  fill: #ffffd4;
+}
+
+.MainPage .caseClass10 {
+  fill: #fed98e;
+}
+
+.MainPage .caseClass25 {
+  fill: #fe9929;
+}
+
+.MainPage .caseClass100 {
+  fill: #d95f0e;
+}
+
+.MainPage .caseClass500 {
+  fill: #993404;
 }
 
 /******************************************************************************/
