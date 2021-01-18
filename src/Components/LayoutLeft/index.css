@@ -5,16 +5,22 @@
   min-width: 300px;
   display: flex;
   flex-direction: column;
+  color: rgb(228,63,90);
 }
 
 /******************************************************************************/
 
 .LargeStats {
   position: relative;
-  background-color: rgb(107, 107, 107);
+  background-color: rgb(27,27,47);
   flex-shrink: 0;
   display: grid;
   padding: 1rem;
+}
+
+.LargeStats .text {
+  text-align: center;
+
 }
 
 .LargeStats * {
@@ -23,6 +29,7 @@
 
 .LargeStats .number {
   font-size: 3rem;
+
 }
 
 .LargeStats .tooltip {
@@ -50,7 +57,7 @@
 /******************************************************************************/
 
 .List {
-  background-color: rgb(168, 168, 168);
+  background-color: rgb(22, 36, 71);
   overflow-y: auto;
   overflow-x: hidden;
 }
@@ -64,7 +71,7 @@
   font-size: 1.1rem;
   padding: 1rem 0;
   cursor: pointer;
-  border-bottom: 1px solid #262626;
+  border-bottom: 1px solid #e43f5a;
 }
 
 .List .item:hover {
@@ -76,12 +83,18 @@
   float: right;
 }
 
+
 input {
   position: sticky;
   top: 0.5rem;
   width: calc(100% - 2.2rem);
   margin: 0.5rem 0.5rem 0 0.5rem;
   padding: 0.5rem;
+  color: rgb(228,63,90);
+  background-color: rgb(22, 36, 71);
+  font-weight: bold;
+  border: 1px solid rgb(228,63,90); 
 }
 
 /******************************************************************************/
+

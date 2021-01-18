@@ -16,12 +16,13 @@
   right: 0.75rem;
   padding: 0.25rem 0.5rem;
   cursor: pointer;
+  color: rgb(228,63,90);
 }
 
 /******************************************************************************/
 
 .MainPage {
-  background: rgb(233, 233, 233);
+  background: rgb(31, 58, 104);
   flex: 1;
   display: grid;
   grid-template-areas:
@@ -33,6 +34,7 @@
 .MainPage .text {
   grid-area: text;
   margin: auto 0 auto auto;
+  color: rgb(228,63,90);
 }
 
 .MainPage .text h1 {
@@ -55,28 +57,28 @@
 }
 
 .MainPage .caseClass0 {
-  fill: #ffffd4;
-  color: #ffffd4;
+  fill: #f7c9d0;
+  color: #f7c9d0;
 }
 
 .MainPage .caseClass10 {
-  fill: #fed98e;
-  color: #fed98e;
+  fill: #ee8495;
+  color: #ee8495;
 }
 
 .MainPage .caseClass25 {
-  fill: #fe9929;
-  color: #fe9929;
+  fill: #e65069;
+  color: #e65069;
 }
 
 .MainPage .caseClass100 {
-  fill: #d95f0e;
-  color: #d95f0e;
+  fill: #e43f5a;
+  color: #e43f5a;
 }
 
 .MainPage .caseClass500 {
-  fill: #993404;
-  color: #993404;
+  fill: #e22e4b;
+  color: #e22e4b;
 }
 
 .MainPage .legend {
