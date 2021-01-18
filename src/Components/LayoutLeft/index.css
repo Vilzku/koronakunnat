@@ -35,7 +35,7 @@
 
 .LargeStats .tooltip {
   display: inline;
-  border-bottom: 1px dotted black;
+  border-bottom: 1px dotted rgb(228,63,90);
   cursor: help;
 }
 
@@ -48,7 +48,7 @@
   background-color: #262626;
   padding: 8px;
   border-radius: 5px;
-  color: rgb(22, 36, 71);
+  color: rgb(228,63,90);
 }
 
 .LargeStats .tooltip:hover .tooltiptext {
@@ -64,7 +64,7 @@
 }
 
 .List .list-items {
-  margin: 0 1rem 1rem 1rem;
+  
 }
 
 .List .item {
@@ -73,11 +73,15 @@
   padding: 1rem 0;
   cursor: pointer;
   border-bottom: 1px solid #e43f5a;
+  margin: 0 1rem 0rem 1rem;
+  padding: 0.5rem 0.5rem;
 }
 
 .List .item:hover {
-  color: red;
+  color: white;
   transition: all 0.25s ease-out;
+  background-color: #e43f5a;
+  margin: 0 0rem 1rem 0rem;
 }
 
 .List span {
