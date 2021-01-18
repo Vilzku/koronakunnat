@@ -56,7 +56,7 @@
 /******************************************************************************/
 
 .List {
-  background-color: rgb(31, 51, 101);
+  background-color: rgb(41,55,91);
   overflow-y: auto;
   overflow-x: hidden;
 }
@@ -88,7 +88,7 @@ input {
   margin: 0.5rem 0.5rem 0 0.5rem;
   padding: 0.5rem;
   color: rgb(228, 63, 90);
-  background-color: rgb(31, 51, 101);
+  background-color: rgb(41,55,91);
   font-weight: bold;
   border: 1px solid rgb(228, 63, 90);
 }
