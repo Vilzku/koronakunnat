@@ -6,6 +6,7 @@
   display: flex;
   flex-direction: column;
   color: rgb(228,63,90);
+  background-color: rgb(31, 58, 104);
 }
 
 /******************************************************************************/
@@ -47,7 +48,7 @@
   background-color: #262626;
   padding: 8px;
   border-radius: 5px;
-  color: white;
+  color: rgb(22, 36, 71);
 }
 
 .LargeStats .tooltip:hover .tooltiptext {
@@ -57,7 +58,7 @@
 /******************************************************************************/
 
 .List {
-  background-color: rgb(22, 36, 71);
+  background-color: rgb(31, 58, 104);
   overflow-y: auto;
   overflow-x: hidden;
 }
@@ -91,7 +92,7 @@ input {
   margin: 0.5rem 0.5rem 0 0.5rem;
   padding: 0.5rem;
   color: rgb(228,63,90);
-  background-color: rgb(22, 36, 71);
+  background-color: rgb(31, 58, 104);
   font-weight: bold;
   border: 1px solid rgb(228,63,90); 
 }
