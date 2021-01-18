@@ -27,10 +27,11 @@ footer {
   display: flex;
   justify-content: center;
   flex: 1;
-  color: rgb(228,63,90);
+  color: rgb(228, 63, 90);
 }
 
-a:link, a:visited {
+a:link,
+a:visited {
   background-color: #e43f5a;
   color: white;
   padding: 15px 15px;

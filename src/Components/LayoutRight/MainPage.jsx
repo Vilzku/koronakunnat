@@ -1,12 +1,14 @@
 
 import React, { useEffect, useState } from 'react';
 import { ReactComponent as Map } from '../../Assets/map.svg';
-import { fetchLocalData, fetchPopulation } from '../../api.js';
+import { fetchLocalData, fetchPopulation, fetchPast3Weeks, fetchPast14days } from '../../api.js';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircle } from '@fortawesome/free-solid-svg-icons'
 
 function MainPage(props) {
+
+    const [pastDays, setPastDays] = useState([]);
 
     let hcdList = props.hcdList;
     const ALL_AREAS_ID = '445222'
@@ -57,10 +59,32 @@ function MainPage(props) {
 
     }
 
+    /*
+                for(let areaKey in list) {
+                  let area = list[areaKey];
+
+                  area.cases = [];
+                  
+                  for(let key in area) {
+                    if(key === 'key' || key === 'cases') continue;
+                    for(let i in area[key]) {
+                      console.log(area[key][i])
+                      if(!area[key][i]) break;
+                      if(area.cases.length === 14) area.cases.shift()
+                      area.cases.push(area[key][i])
+                    }
+                  }
+
+                }
+    */
 
     useEffect(() => {
-        if(hcdList.length > 0) mapSetup();
-      }, [hcdList]);
+        fetchPast3Weeks().then(data => {
+            fetchPast14days(data).then(data => {
+                setPastDays(data);
+            });
+        });
+    }, [hcdList]);
 
     return (
         <div className="MainPage">
@@ -68,11 +92,11 @@ function MainPage(props) {
                 <h1>Korona<br/>
                     Psykoosi</h1>
                 <h2>{ "+22" + " tartuntaa"}</h2>
-                <p>Viimeisen vuosituhannen aikana</p>
+                <p>Viimeisen vuosituhannen aikana {console.log(JSON.stringify(pastDays))}</p>
             </div>
             <Map className="Map" />
             <div className="legend">
-                <p className="legendText"> lmaantuvuus – Tapausten määrä 100 000 asukasta kohti</p>
+                <p className="legendText">Ilmaantuvuus – Tapausten määrä 100 000:ta asukasta kohti</p>
                 <FontAwesomeIcon icon={faCircle} className="circleIcon caseClass0" /> 0–10
                 <FontAwesomeIcon icon={faCircle} className="circleIcon caseClass10" /> 10–25
                 <FontAwesomeIcon icon={faCircle} className="circleIcon caseClass25" /> 25-100

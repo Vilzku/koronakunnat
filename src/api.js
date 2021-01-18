@@ -237,3 +237,128 @@ export function fetchPopulation(area, noRetry) {
       })
   })
 }
+
+
+
+export function fetchPast3Weeks(noRetry) {
+
+/*
+  Returns a promise with list of three keys for three corresponding weeks
+  ['123456', '123436', '123447']
+*/
+  
+  return new Promise(resolve => {
+  
+    const url = 'https://sampo.thl.fi/pivot/prod/fi/epirapo/covid19case/fact_epirapo_covid19case.json'
+    let keys = [];
+
+    fetch(url)
+      .then(response => {
+        response.json()
+          .then(data => {
+
+            for(let i=0; i<105; i++) {
+              if(!data.dataset.value[i]) {
+                
+                let positions = data.dataset.dimension.dateweek20200101.category.index;
+                for(var key in positions) {
+                  let id = positions[key];
+                  if(id === i-3 || id === i-2 || id === i-1) keys.push(key);
+                }
+                break;
+              }
+            }
+
+            console.log("api:fetchPastWeeks: 3 weeks loaded")
+            return resolve(keys);
+          
+          }) // Try again if error is catched
+          .catch(err => {
+            console.log(err);
+            setTimeout(() => { 
+              return (!noRetry ? fetchPast3Weeks(true) : []);
+            }, 1000);
+          })
+      })
+      .catch(err => {
+        console.log(err);
+        setTimeout(() => {
+          return (!noRetry ? fetchPast3Weeks(true) : []);
+        }, 1000);
+      })
+  })
+}
+
+  
+export function fetchPast14days(keyList, noRetry) {
+
+/*
+  Returns a list of objects containing key and cases for past 14 days
+
+  {
+    key: 123456,
+    cases: [0, 1, 2, 3, ..., 13]
+  }
+*/
+
+  let list = [];
+
+  return new Promise(resolve => {
+  
+    // Iterate through 3 weeks
+    for(let index in keyList) {
+
+      const url = 'https://sampo.thl.fi/pivot/prod/fi/epirapo/covid19case/fact_epirapo_covid19case.json?row=hcdmunicipality2020-445222&column=dateweek20200101-' + keyList[index];
+
+      fetch(url)
+        .then(response => {
+          response.json()
+            .then(data => {
+
+              let positions = data.dataset.dimension.hcdmunicipality2020.category.index;
+
+              // Iterate through each area
+              for(let id in positions) {
+
+                // Create objects if on first iteration
+                if(list.length < 22) {
+                  list.push({
+                    key: id,
+                  });
+                }
+
+                // Update area cases
+                list.map(area => {
+                  if(area.key === id) {
+                    for(let i=0; i<7; i++) {
+                      if(!area[keyList[index]]) area[keyList[index]] = [];
+                      area[keyList[index]].push(data.dataset.value[i+8*positions[id]]);
+                    }
+                  } 
+                });
+              }
+              
+              console.log("api:fetchPast14days: week " + keyList[index] +" loaded")
+
+              // Parse data and return on last iteration
+              if(index === '2') {
+                return resolve(list);
+              }
+
+            }) // Try again if error is catched
+            .catch(err => {
+              console.log(err);
+              setTimeout(() => {
+                return (!noRetry ? fetchPast14days(keyList, true) : []);
+              }, 1000);
+            });
+        })
+        .catch(err => {
+          console.log(err);
+          setTimeout(() => {
+            return (!noRetry ? fetchPast14days(keyList, true) : []);
+          }, 1000);
+        });
+    }
+  })
+}
