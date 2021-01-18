@@ -54,7 +54,6 @@
 .MainPage .Map path:hover,
 .MainPage .Map polygon:hover {
   opacity: 80%;
-  color: rgb(22, 36, 71);
 }
 
 .MainPage .caseClass0 {
@@ -89,6 +88,27 @@
 
 .MainPage .legend * {
   margin: 0 0.25rem 0.25rem 1rem;
+}
+
+/* Let's get this party started */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgba(228,63,90,0.8); 
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
+::-webkit-scrollbar-thumb:window-inactive {
+background: rgba(255,0,0,0.4); 
 }
 
 /******************************************************************************/
