@@ -293,11 +293,13 @@ export function fetchPast3Weeks(noRetry) {
 export function fetchPast14days(keyList, noRetry) {
 
 /*
-  Returns a list of objects containing key and cases for past 14 days
+  Returns a list of objects containing key and cases for past 3 weeks for parsing
 
   {
     key: 123456,
-    cases: [0, 1, 2, 3, ..., 13]
+    235436: [0, 1, 2, 3, ..., 6],
+    232336: [0, 1, 2, 3, ..., 6],
+    234566: [0, 1, 2, 3, ..., 6],
   }
 */
 
@@ -328,24 +330,25 @@ export function fetchPast14days(keyList, noRetry) {
                 }
 
                 // Update area cases
-                list.map(area => {
+                for(let areaKey in list) {
+                  let area = list[areaKey];
                   if(area.key === id) {
                     for(let i=0; i<7; i++) {
                       if(!area[keyList[index]]) area[keyList[index]] = [];
                       area[keyList[index]].push(data.dataset.value[i+8*positions[id]]);
                     }
                   } 
-                });
+                };
               }
               
               console.log("api:fetchPast14days: week " + keyList[index] +" loaded")
 
-              // Parse data and return on last iteration
-              if(index === '2') {
+              // Return on last iteration
+              if(list[0][keyList[0]] && list[0][keyList[1]] && list[0][keyList[2]]) {  
                 return resolve(list);
               }
 
-            }) // Try again if error is catched
+            }) // Try again if error is catched, apparently not working
             .catch(err => {
               console.log(err);
               setTimeout(() => {

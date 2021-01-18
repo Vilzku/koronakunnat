@@ -8,35 +8,36 @@ import { faCircle } from '@fortawesome/free-solid-svg-icons'
 
 function MainPage(props) {
 
-    const [pastDays, setPastDays] = useState([]);
-
     let hcdList = props.hcdList;
-    const ALL_AREAS_ID = '445222'
 
-    function mapSetup() {
+    function mapSetup(pastDays) {
 
         for(let i=0; i<hcdList.length; i++) {
 
             // Skip all areas -- and some DHC since map is bad
             if(i === 14 || i === 8 || i === 10) continue;
 
-            fetchLocalData(hcdList[i].key, ALL_AREAS_ID).then(hcd => {
-                fetchPopulation(hcd).then(hcd => {
+            let hcd = hcdList[i];
+            let key = hcd['key'];
 
-                    // Parse cases for last two weeks
-                    let weeklyCases = hcd['weeklyCases']
-                    let cases = ['0', '0'];
-                    for(let j=0; j<106; j++) {
-                        if(!weeklyCases[j]) {
-                            cases = parseInt(cases[0]) + parseInt(cases[1]);
-                            break;
-                        }
-                        cases.shift();
-                        cases.push(weeklyCases[j]);
-                    }
-                    
-                    let per100k = cases / (hcd['population'] / 100000)
+
+            for(let item in pastDays) {
+                
+                if(pastDays[item]['key'] === key) {
+                    let cases = pastDays[item]['cases'];
+                    let sum = cases.reduce((a, b) => {
+                        return parseInt(a) + parseInt(b);
+                    }, 0);
+            
+                    let per100k = sum / (200000 / 100000)
                     per100k = Math.round(per100k);
+
+                    /*
+                        TODO TODO TODO TODO TODO
+                        Fetchaa asukasluvut
+
+
+                    */
 
                     let element = document.getElementById(hcd['key']);
                     if(element) {
@@ -52,39 +53,39 @@ function MainPage(props) {
                             element.classList.add("caseClass500");
                         }
                     }
-                });
-            });
+                }
+
+            }
 
         }
 
     }
 
-    /*
-                for(let areaKey in list) {
-                  let area = list[areaKey];
-
-                  area.cases = [];
-                  
-                  for(let key in area) {
-                    if(key === 'key' || key === 'cases') continue;
-                    for(let i in area[key]) {
-                      console.log(area[key][i])
-                      if(!area[key][i]) break;
-                      if(area.cases.length === 14) area.cases.shift()
-                      area.cases.push(area[key][i])
-                    }
-                  }
-
-                }
-    */
-
+    // Fetch data for past days
+    // Api function just sucks, so parsing the rest here to save time
     useEffect(() => {
         fetchPast3Weeks().then(data => {
-            fetchPast14days(data).then(data => {
-                setPastDays(data);
+            fetchPast14days(data).then(list => {
+                for(let areaKey in list) {
+                    let area = list[areaKey];
+            
+                    area.cases = [];
+                    
+                    for(let key in area) {
+                      if(key === 'key' || key === 'cases') continue;
+                      for(let i in area[key]) {
+                        if(!area[key][i]) break;
+                        if(area.cases.length === 14) area.cases.shift()
+                        area.cases.push(area[key][i])
+                      }
+                    }
+                }
+                mapSetup(list);
             });
         });
     }, [hcdList]);
+
+    
 
     return (
         <div className="MainPage">
@@ -92,7 +93,7 @@ function MainPage(props) {
                 <h1>Korona<br/>
                     Psykoosi</h1>
                 <h2>{ "+22" + " tartuntaa"}</h2>
-                <p>Viimeisen vuosituhannen aikana {console.log(JSON.stringify(pastDays))}</p>
+                <p>Viimeisen vuosituhannen aikana</p>
             </div>
             <Map className="Map" />
             <div className="legend">
