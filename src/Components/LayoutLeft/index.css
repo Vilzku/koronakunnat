@@ -5,15 +5,15 @@
   min-width: 300px;
   display: flex;
   flex-direction: column;
-  color: rgb(228,63,90);
-  background-color: rgb(31,51,101);
+  color: rgb(228, 63, 90);
+  background-color: rgb(31, 51, 101);
 }
 
 /******************************************************************************/
 
 .LargeStats {
   position: relative;
-  background-color: rgb(27,27,47);
+  background-color: rgb(27, 27, 47);
   flex-shrink: 0;
   display: grid;
   padding: 1rem;
@@ -21,7 +21,6 @@
 
 .LargeStats .text {
   text-align: center;
-
 }
 
 .LargeStats * {
@@ -30,12 +29,11 @@
 
 .LargeStats .number {
   font-size: 3rem;
-
 }
 
 .LargeStats .tooltip {
   display: inline;
-  border-bottom: 1px dotted rgb(228,63,90);
+  border-bottom: 1px dotted rgb(228, 63, 90);
   cursor: help;
 }
 
@@ -48,7 +46,7 @@
   background-color: #262626;
   padding: 8px;
   border-radius: 5px;
-  color: rgb(228,63,90);
+  color: rgb(228, 63, 90);
 }
 
 .LargeStats .tooltip:hover .tooltiptext {
@@ -58,7 +56,7 @@
 /******************************************************************************/
 
 .List {
-  background-color: rgb(31,51,101);
+  background-color: rgb(31, 51, 101);
   overflow-y: auto;
   overflow-x: hidden;
 }
@@ -70,14 +68,13 @@
   cursor: pointer;
   border-bottom: 1px solid #e43f5a;
   margin: 0 1rem 0rem 1rem;
-  padding: 0.5rem 2rem;
 }
 
 .List .item:hover {
   color: white;
   background-color: #e43f5a;
-  border-bottom: none;
-  margin: 0 0rem 0rem 0rem;
+  margin: 0;
+  padding: 1rem;
 }
 
 .List span {
@@ -90,11 +87,10 @@ input {
   width: calc(100% - 2.2rem);
   margin: 0.5rem 0.5rem 0 0.5rem;
   padding: 0.5rem;
-  color: rgb(228,63,90);
-  background-color: rgb(31,51,101);
+  color: rgb(228, 63, 90);
+  background-color: rgb(31, 51, 101);
   font-weight: bold;
-  border: 1px solid rgb(228,63,90); 
+  border: 1px solid rgb(228, 63, 90);
 }
 
 /******************************************************************************/
-
