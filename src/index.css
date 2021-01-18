@@ -39,3 +39,10 @@ a:visited {
   text-decoration: none;
   display: inline-block;
 }
+<<<<<<< Updated upstream
+=======
+
+a:hover {
+  background-color: #dd1f3e;
+}
+>>>>>>> Stashed changes

@@ -63,10 +63,6 @@
   overflow-x: hidden;
 }
 
-.List .list-items {
-  
-}
-
 .List .item {
   list-style: none;
   font-size: 1.1rem;
@@ -74,20 +70,19 @@
   cursor: pointer;
   border-bottom: 1px solid #e43f5a;
   margin: 0 1rem 0rem 1rem;
-  padding: 0.5rem 0.5rem;
+  padding: 0.5rem 2rem;
 }
 
 .List .item:hover {
   color: white;
-  transition: all 0.25s ease-out;
   background-color: #e43f5a;
-  margin: 0 0rem 1rem 0rem;
+  border-bottom: none;
+  margin: 0 0rem 0rem 0rem;
 }
 
 .List span {
   float: right;
 }
-
 
 input {
   position: sticky;
