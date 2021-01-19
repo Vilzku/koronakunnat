@@ -1,39 +1,51 @@
 import React from 'react';
 
 import CanvasJSReact from '../../Assets/canvasjs.react';
+
 var CanvasJS = CanvasJSReact.CanvasJS;
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
-
+var dps = [];
+var week = 1;
 function CumulativeGraph(props) {
-
+    let selectedCity = props.selectedCity;
+    /*if(!selectedCity) return (<div className="CumulativeGraph"></div>)*/
+    let weeklyHcdCases = props.weeklyHcdCases;
+    
+    /*console.log(selectedCity.area);*/
+    console.log(dps)
+    for(let i in weeklyHcdCases) {
+        dps.push({x: 1, y:2})
+        dps.push({x: weeklyHcdCases, y: week})
+        i++;g
+        week++;
+        console.log(dps);
+    }
+    dps.push({x: 1, y:2})
+    
     const options = {
         theme: "light2",
         animationEnabled: true,
         exportEnabled: true,
         title: {
-            text: "Number of iPhones Sold"
+            
+            text:  "Kunnan korona tapaukset"
         },
         axisY: {
-            title: "Number of iPhones ( in Million )"
+            title: "Tapaukset viikottain"
         },
         data: [
         {
             type: "area",
-            xValueFormatString: "YYYY",
-            yValueFormatString: "#,##0.## Million",
-            dataPoints: [
-                { x: new Date(2017, 0), y: 7.6},
-                { x: new Date(2016, 0), y: 7.3},
-                { x: new Date(2015, 0), y: 6.4},
-                { x: new Date(2014, 0), y: 5.3},
-                { x: new Date(2013, 0), y: 4.5},
-                { x: new Date(2012, 0), y: 3.8},
-                { x: new Date(2011, 0), y: 3.2}
-            ]
+            xValueFormatString: "Viikko #",
+            yValueFormatString: "### Tapausta",
+            dataPoints: dps
+              
         }
         ]
     }
 
+    
+    
     return (
         <div className="CumulativeGraph">
 
