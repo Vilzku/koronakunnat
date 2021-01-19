@@ -5,7 +5,7 @@ var CanvasJS = CanvasJSReact.CanvasJS;
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 function WeeklyGraph(props) {
-
+    let weeklyHcdCases = props.selectedCity.weeklyHcdCases;
     const options = {
         animationEnabled: true,
         exportEnabled: true,

@@ -23,7 +23,7 @@ function CumulativeGraph(props) {
             }
             /*console.log({x: weeklyHcdCases[i], y: week});*/
             sum += parseInt(weeklyHcdCases[i])
-            dps.push({x: parseInt(week), y: parseInt(sum)})
+            dps.push({x: parseInt(++i), y: parseInt(sum)})
         
             week++;
             

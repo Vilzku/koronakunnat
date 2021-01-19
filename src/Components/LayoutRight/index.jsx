@@ -37,7 +37,8 @@ function LayoutRight(props) {
                 <HcdStats />
                 <CumulativeGraph selectedCity={props.selectedCity}
                                 weeklyHcdCases={props.weeklyHcdCases}/>
-                <WeeklyGraph />
+                <WeeklyGraph selectedCity={props.selectedCity}
+                             weeklyHcdCases={props.weeklyHcdCases}/>
             </div>
         );
     }
