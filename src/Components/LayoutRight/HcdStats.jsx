@@ -30,16 +30,12 @@ function HcdStats(props) {
             vaccinations[i].hcd.forEach(area => {
                 if(area === selectedHcd.key) {
                     console.log(JSON.stringify(vaccinations[i]));
-                    let element = document.getElementById('lmao')
-                    element.innerHTML = props.vaccinations[i].shots;
                     return props.vaccinations[i].shots;
                 }
             });
         }
 
     }
-
-    /* Jösses mikä viritelmä */
 
     let change = calculateChange();
     let vaccinations = getShots();
@@ -54,7 +50,6 @@ function HcdStats(props) {
             <p>edellisen viikon alusta</p>
 
             <FontAwesomeIcon icon={faSyringe} className="SyringeIcon" /> 
-            <div id="lmao"></div>
             
             
         </div>
