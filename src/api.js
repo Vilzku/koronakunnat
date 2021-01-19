@@ -258,11 +258,11 @@ export function fetchPast3Weeks(noRetry) {
           .then(data => {
 
             for(let i=0; i<105; i++) {
-              if(!data.dataset.value[i]) {
-                
+              if(!data.dataset.value[i] && i>13) {
                 let positions = data.dataset.dimension.dateweek20200101.category.index;
                 for(var key in positions) {
                   let id = positions[key];
+                  
                   if(id === i-3 || id === i-2 || id === i-1) keys.push(key);
                 }
                 break;
