@@ -5,22 +5,24 @@ import CanvasJSReact from '../../Assets/canvasjs.react';
 var CanvasJS = CanvasJSReact.CanvasJS;
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 var dps = [];
-var week = 1;
+
 function CumulativeGraph(props) {
-    let selectedCity = props.selectedCity;
+    let weeklyHcdCases = props.selectedCity.weeklyHcdCases;
     /*if(!selectedCity) return (<div className="CumulativeGraph"></div>)*/
-    let weeklyHcdCases = props.weeklyHcdCases;
-    
+    /*let weeklyHcdCases = props.weeklyHcdCases;*/
+    var week = 1;
     /*console.log(selectedCity.area);*/
-    console.log(dps)
+    console.log(dps);
+    console.log(weeklyHcdCases);
     for(let i in weeklyHcdCases) {
-        dps.push({x: 1, y:2})
         dps.push({x: weeklyHcdCases, y: week})
-        i++;g
+        i++;
         week++;
-        console.log(dps);
+        
     }
-    dps.push({x: 1, y:2})
+    week++;
+    console.log(week);
+    /*dps.push({x: 1, y:2})*/
     
     const options = {
         theme: "light2",
