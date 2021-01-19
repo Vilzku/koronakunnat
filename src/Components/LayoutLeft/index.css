@@ -90,6 +90,13 @@
   padding: 1rem;
 }
 
+.List .item:active {
+  color: white;
+  background-color: #e22e4b;
+  margin: 0;
+  padding: 1rem;
+}
+
 .List .item:first-child:hover {
   margin: 0.3rem 0 0 0;
 }

@@ -10,13 +10,13 @@ function WeeklyGraph(props) {
     let week = 1;
 
 
-    console.log(weeklyHcdCases);
+    
     
         for(let i in weeklyHcdCases) {
             if(weeklyHcdCases[i] === undefined) {
                 continue;
             }
-            /*console.log({x: weeklyHcdCases[i], y: week});*/
+           
            
             dps.push({x: parseInt(++i), y: parseInt(weeklyHcdCases[i])})
         
@@ -26,7 +26,7 @@ function WeeklyGraph(props) {
         dps.pop()
     
       
-        console.log(JSON.stringify(dps));
+     
 
     const options = {
         theme: "dark2",
@@ -37,12 +37,20 @@ function WeeklyGraph(props) {
             text: "SHP viikottaiset tartunnat",
             fontColor: "#e43f5a"
         },
+        axisX:{
+            labelFontColor: "#e43f5a",
+            lineColor: "#e43f5a",
+            tickColor: "#525252"
+        },
         axisY: {
-            includeZero: true
+            includeZero: true,
+            gridColor: "#525252",
+            tickColor: "#525252",
+            labelFontColor: "#e43f5a"
         },
         data: [{
             color: "#e43f5a",
-            fillOpacity: 0.9,
+            fillOpacity: 0.8,
             type: "column", //change type to bar, line, area, pie, etc
             //indexLabel: "{y}", //Shows y value on all Data Points
             xValueFormatString: "Viikko #",

@@ -8,20 +8,19 @@ var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 function CumulativeGraph(props) {
     let weeklyHcdCases = props.selectedCity.weeklyHcdCases;
-    /*if(!selectedCity) return (<div className="CumulativeGraph"></div>)*/
-    /*let weeklyHcdCases = props.weeklyHcdCases;*/
+  
     let dps = [];
     let week = 1;
     let sum = 0;
-    /*console.log(selectedCity.area);*/
     
-    console.log(weeklyHcdCases);
+    
+    
     
         for(let i in weeklyHcdCases) {
             if(weeklyHcdCases[i] === undefined) {
                 continue;
             }
-            /*console.log({x: weeklyHcdCases[i], y: week});*/
+           
             sum += parseInt(weeklyHcdCases[i])
             dps.push({x: parseInt(++i), y: parseInt(sum)})
         
@@ -31,7 +30,7 @@ function CumulativeGraph(props) {
         dps.pop()
     
       
-        console.log(JSON.stringify(dps));
+        
     
     
     
@@ -47,10 +46,16 @@ function CumulativeGraph(props) {
         },
 
         axisX:{
-            reversed: false
+            reversed: false,
+            tickColor: "#525252",
+            labelFontColor: "#e43f5a",
+            lineColor: "#525252"
         },
         axisY: {
-            title: ""
+            title: "",
+            gridColor: "#525252",
+            tickColor: "#525252",
+            labelFontColor: "#e43f5a"
         },
         data: [
         {
