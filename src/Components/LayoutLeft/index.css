@@ -88,6 +88,7 @@
   background-color: #e43f5a;
   margin: 0;
   padding: 1rem;
+  user-select: none;
 }
 
 .List .item:active {
