@@ -1,5 +1,8 @@
 import React from 'react';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSyringe } from '@fortawesome/free-solid-svg-icons'
+
 function HcdStats(props) {
 
     if(!props.selectedHcd) return(<div className="HcdStats"></div>);
@@ -17,8 +20,31 @@ function HcdStats(props) {
         if(lastWeeks[1] === "..") lastWeeks[1] = '0';
         return parseInt(lastWeeks[0]) + parseInt(lastWeeks[1])
     }
-    
+
+    function getShots() {
+        const vaccinations = props.vaccinations;
+        if(!vaccinations) return undefined;
+        
+        for(let i=0; i<vaccinations.length; i++) {
+            if(!vaccinations[i].hcd) continue;
+            vaccinations[i].hcd.forEach(area => {
+                if(area === selectedHcd.key) {
+                    console.log(JSON.stringify(vaccinations[i]));
+                    let element = document.getElementById('lmao')
+                    element.innerHTML = props.vaccinations[i].shots;
+                    return props.vaccinations[i].shots;
+                }
+            });
+        }
+
+    }
+
+    /* Jösses mikä viritelmä */
+
     let change = calculateChange();
+    let vaccinations = getShots();
+
+    console.log(vaccinations)
 
     return (
         <div className="HcdStats">
@@ -26,6 +52,11 @@ function HcdStats(props) {
             <h2>{ selectedHcd.weeklyCases[105] } tartuntaa</h2>
             <h2>{ change } uutta tartuntaa</h2>
             <p>edellisen viikon alusta</p>
+
+            <FontAwesomeIcon icon={faSyringe} className="SyringeIcon" /> 
+            <div id="lmao"></div>
+            
+            
         </div>
     );
 }

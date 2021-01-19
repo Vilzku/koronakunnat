@@ -155,10 +155,19 @@ export function fetchVaccinationData(noRetry) {
       date: "2021-01-15T11:44:00.000Z",
       area: "Finland",
       shots: "22"
+      hcd: ["445282", "445225", "445206"]
     }
   */
   
     return new Promise(resolve => {
+
+      const areas = {
+        HYKS: ["445193","445043","445178","445014"],
+        KYS: ["445223","445155","445175","445285","445293"],
+        OYS: ["444996","445101","445230","445224","445190"],
+        TAYS: ["445282","445225","445206"],
+        TYKS: ["445197","445170","445079"]
+      }
     
       const url = 'https://w3qa5ydb4l.execute-api.eu-west-1.amazonaws.com/prod/finnishVaccinationData'
       let list = [];
@@ -171,6 +180,10 @@ export function fetchVaccinationData(noRetry) {
             for(let i=0; i<6; i++) {
               list.push(data.pop());
             }
+
+            list.forEach(item => {
+              item['hcd'] = areas[item.area];
+            });
             
             console.log("api:fetchVaccinationData: Vaccinations loaded");
             return resolve(list);
