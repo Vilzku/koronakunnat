@@ -59,6 +59,7 @@ function MainPage(props) {
 
                             // Set total change on past 14 days
                             if(i === 14) {
+                                console.log(cases)
                                 setChangePast14days(sum)
                                 break;
                             }
@@ -99,7 +100,7 @@ function MainPage(props) {
             <div className="text">
                 <h1>Korona<br/>
                     Psykoosi</h1>
-                <h2>{ changePast14days + " tartuntaa" }</h2>
+                <h2>{ changePast14days + " vahvistettua tartuntaa" }</h2>
                 <p>viimeisen 14 vuorokauden aikana</p>
             </div>
             <Map className="Map" />
