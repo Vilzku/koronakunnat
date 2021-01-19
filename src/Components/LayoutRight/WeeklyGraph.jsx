@@ -35,6 +35,7 @@ function WeeklyGraph(props) {
                 fontColor: "#e43f5a"
             },
             axisX:{
+                title: "Viikot",
                 labelFontColor: "#e43f5a",
                 lineColor: "#e43f5a",
                 tickColor: "#525252"

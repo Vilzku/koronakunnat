@@ -30,8 +30,7 @@ function CumulativeGraph(props) {
             },
     
             axisX:{
-                reversed: false,
-    
+                title: "Viikot",
                 tickColor: "#525252",
                 labelFontColor: "#e43f5a",
                 lineColor: "#525252"
