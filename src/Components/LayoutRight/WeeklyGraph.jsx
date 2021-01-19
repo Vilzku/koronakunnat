@@ -37,8 +37,16 @@ function WeeklyGraph(props) {
             text: "SHP viikottaiset tartunnat",
             fontColor: "#e43f5a"
         },
+        axisX:{
+            tickColor: "#e43f5a",
+            gridColor: "#e43f5a",
+            labelFontColor: "#e43f5a"
+        },
         axisY: {
-            includeZero: true
+            includeZero: true,
+            gridColor: "#e43f5a",
+            tickColor: "#e43f5a",
+            labelFontColor: "#e43f5a"
         },
         data: [{
             color: "#e43f5a",
