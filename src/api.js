@@ -310,7 +310,9 @@ export function fetchPast14days(keyList, noRetry) {
     // Iterate through 3 weeks
     for(let index in keyList) {
 
-      const url = 'https://sampo.thl.fi/pivot/prod/fi/epirapo/covid19case/fact_epirapo_covid19case.json?row=hcdmunicipality2020-445222&column=dateweek20200101-' + keyList[index];
+      const weekKey = keyList[index];
+
+      const url = 'https://sampo.thl.fi/pivot/prod/fi/epirapo/covid19case/fact_epirapo_covid19case.json?row=hcdmunicipality2020-445222&column=dateweek20200101-' + weekKey;
 
       fetch(url)
         .then(response => {
@@ -334,14 +336,14 @@ export function fetchPast14days(keyList, noRetry) {
                   let area = list[areaKey];
                   if(area.key === id) {
                     for(let i=0; i<7; i++) {
-                      if(!area[keyList[index]]) area[keyList[index]] = [];
-                      area[keyList[index]].push(data.dataset.value[i+8*positions[id]]);
+                      if(!area[weekKey]) area[weekKey] = [];
+                      area[weekKey].push(data.dataset.value[i+8*positions[id]]);
                     }
                   } 
                 };
               }
               
-              console.log("api:fetchPast14days: week " + keyList[index] +" loaded")
+              console.log("api:fetchPast14days: week " + weekKey +" loaded")
 
               // Return on last iteration
               if(list[0][keyList[0]] && list[0][keyList[1]] && list[0][keyList[2]]) {  
