@@ -4,32 +4,23 @@ import { fetchPopulation, fetchPast14days } from '../../api.js';
 
 function LocalStats(props) {
 
-    const [changePast14days, setChangePast14days] = useState(0);
 
     let selectedCity = props.selectedCity;
 
+    if(!selectedCity) return(<div className="LocalStats"></div>)
 
-    useEffect(() => {
-        console.log("M*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ")
-        fetchPast14days(selectedCity.hcdKey).then(pastDays => {
-            for(let i in pastDays) {
-                console.log(JSON.stringify(pastDays[i] === selectedCity.key))
-                if(pastDays[i] === selectedCity.key) {
-                    
-                    setChangePast14days(pastDays[i].cases[14]);
-                } 
-            }
-            
-        });
-    }, [selectedCity]);
-    
-
+    let lastWeeks = ["0", "0"];
+    for(let i in selectedCity.weeklyCases) {
+        if(i>50 && !selectedCity.weeklyCases[i]) break;
+        lastWeeks.shift();
+        lastWeeks.push(selectedCity.weeklyCases[i]);
+    }
 
     return (
         <div className="LocalStats">
             <h1>{ selectedCity.area }</h1>
-            <h3>{ selectedCity.weeklyCases[105] } tartuntaa</h3>
-            <h3>{ changePast14days }</h3>
+            <h2>{ selectedCity.weeklyCases[105] === ".." ? "alle 5" : selectedCity.weeklyCases[105] } tartuntaa</h2>
+            <h2>{ parseInt(lastWeeks[0]) + parseInt(lastWeeks[1]) }</h2>
         </div>
     );
 }

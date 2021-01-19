@@ -99,6 +99,15 @@
   background-color: #162447;
 }
 
+.LocalStats h1 {
+  font-size: 6rem;
+  margin: 4rem;
+}
+
+.LocalStats h2 {
+  margin-left: 4rem;
+}
+
 /******************************************************************************/
 
 .HcdStats {

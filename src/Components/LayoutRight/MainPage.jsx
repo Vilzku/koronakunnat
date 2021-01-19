@@ -39,7 +39,7 @@ function MainPage(props) {
                         
                                 let per100k = sum / (hcd.population / 100000)
                                 per100k = Math.round(per100k);
-            
+
                                 let element = document.getElementById(hcd['key']);
                                 if(element) {
                                     if(per100k >= 1 && per100k < 10) {

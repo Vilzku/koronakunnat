@@ -391,7 +391,7 @@ export function fetchPast14days(areaID) {
               }, 0);
               data[item].cases.push(sum);
             }
-            console.log(data)
+
             return resolve(data);
 
           });
