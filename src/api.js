@@ -83,6 +83,7 @@ export function fetchLocalData(id, hcdId, noRetry) {
   {
     area: "Lappeenranta",
     hcd: "Etelä-Karjalan SHP",
+    hcdKey: "123454",
     key: "445286",
     weeklyCases: [0, 0, 22, 45, ..., null, null],
     weeklyHcdCases: [0, 0, 22, 45, ..., null, null]
@@ -110,7 +111,7 @@ export function fetchLocalData(id, hcdId, noRetry) {
             // Add necessary data
             let localData = {
               key: id,
-              hcd: hcdId
+              hcdKey: hcdId
             }
 
             localData['area'] = data.dataset.dimension.hcdmunicipality2020.category.label[id];
@@ -352,6 +353,15 @@ function fetchWeekDays(weekKey, areaID, areaList, noRetry) {
 
 export function fetchPast14days(areaID) {
 
+/*
+  Returns a promise with a list of objects containing data from past three weeks
+  {
+    key: "123456",
+    cases:
+  }
+
+*/
+
   return new Promise(resolve => {
     fetchPast3Weeks().then(keyList => {
       fetchWeekDays(keyList[0], areaID, []).then(data => {
@@ -381,7 +391,7 @@ export function fetchPast14days(areaID) {
               }, 0);
               data[item].cases.push(sum);
             }
-
+            console.log(data)
             return resolve(data);
 
           });

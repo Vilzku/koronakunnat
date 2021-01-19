@@ -33,7 +33,7 @@ function LayoutRight(props) {
                     size="2x"
                     className="closeIcon"
                     onClick={ () => props.onButtonClicked(null) }/>
-                <LocalStats />
+                <LocalStats selectedCity={props.selectedCity}/>
                 <HcdStats />
                 <CumulativeGraph />
                 <WeeklyGraph />
