@@ -37,7 +37,8 @@ function CumulativeGraph(props) {
     
     
     const options = {
-        theme: "light2",
+        theme: "dark2",
+        backgroundColor: "#162447",
         animationEnabled: true,
         exportEnabled: true,
         title: {
@@ -53,6 +54,8 @@ function CumulativeGraph(props) {
         },
         data: [
         {
+            color: "#e43f5a",
+            fillOpacity: 0.4,
             type: "area",
             xValueFormatString: "Viikko #",
             yValueFormatString: "#### Tapausta",

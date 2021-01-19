@@ -29,9 +29,10 @@ function WeeklyGraph(props) {
         console.log(JSON.stringify(dps));
 
     const options = {
+        theme: "dark2",
+        backgroundColor: "#162447",
         animationEnabled: true,
         exportEnabled: true,
-        theme: "light2", //"light1", "dark1", "dark2"
         title:{
             text: "SHP viikottaiset tartunnat"
         },
@@ -39,6 +40,8 @@ function WeeklyGraph(props) {
             includeZero: true
         },
         data: [{
+            color: "#e43f5a",
+            fillOpacity: 0.9,
             type: "column", //change type to bar, line, area, pie, etc
             //indexLabel: "{y}", //Shows y value on all Data Points
             xValueFormatString: "Viikko #",
