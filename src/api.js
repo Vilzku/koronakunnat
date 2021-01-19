@@ -290,11 +290,11 @@ export function fetchPast3Weeks(noRetry) {
 }
 
 
-function fetchWeekDays(weekKey, areaList, noRetry) {
+function fetchWeekDays(weekKey, areaID, areaList, noRetry) {
 
   return new Promise(resolve => {
   
-      const url = 'https://sampo.thl.fi/pivot/prod/fi/epirapo/covid19case/fact_epirapo_covid19case.json?row=hcdmunicipality2020-445222&column=dateweek20200101-' + weekKey;
+      const url = 'https://sampo.thl.fi/pivot/prod/fi/epirapo/covid19case/fact_epirapo_covid19case.json?row=hcdmunicipality2020-' + areaID + '&column=dateweek20200101-' + weekKey;
       let list = [];
       if(areaList) list = areaList;
 
@@ -335,14 +335,14 @@ function fetchWeekDays(weekKey, areaList, noRetry) {
             .catch(err => {
               console.log(err);
               setTimeout(() => {
-                return (!noRetry ? fetchWeekDays(weekKey, areaList, true) : []);
+                return (!noRetry ? fetchWeekDays(weekKey, areaID, areaList, true) : []);
               }, 1000);
             });
         })
         .catch(err => {
           console.log(err);
           setTimeout(() => {
-            return (!noRetry ? fetchWeekDays(weekKey, areaList, true) : []);
+            return (!noRetry ? fetchWeekDays(weekKey, areaID, areaList, true) : []);
           }, 1000);
         });
     
@@ -350,13 +350,13 @@ function fetchWeekDays(weekKey, areaList, noRetry) {
 }
 
 
-export function fetchPast14days() {
+export function fetchPast14days(areaID) {
 
   return new Promise(resolve => {
     fetchPast3Weeks().then(keyList => {
-      fetchWeekDays(keyList[0]).then(data => {
-        fetchWeekDays(keyList[1], data).then(data => {
-          fetchWeekDays(keyList[2], data).then(data => {
+      fetchWeekDays(keyList[0], areaID, []).then(data => {
+        fetchWeekDays(keyList[1], areaID, data).then(data => {
+          fetchWeekDays(keyList[2], areaID, data).then(data => {
 
           
             for(let areaKey in data) {
@@ -390,3 +390,4 @@ export function fetchPast14days() {
     });
   });
 }
+

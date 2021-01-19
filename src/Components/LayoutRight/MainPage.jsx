@@ -14,7 +14,7 @@ function MainPage(props) {
 
     function mapSetup() {
 
-        fetchPast14days().then(pastDays => {
+        fetchPast14days('445222').then(pastDays => {
             for(let i=0; i<hcdList.length; i++) {
 
                 // Skip some DHC since map is bad
@@ -23,40 +23,44 @@ function MainPage(props) {
                 let hcd = hcdList[i];
                 let key = hcd['key'];
     
-                fetchPopulation(hcd).then(hcd => {
-                    for(let item in pastDays) {
-                    
-                        if(pastDays[item]['key'] === key) {
-                            
-                            let sum = pastDays[item].cases[14];
-
-                            // Set total change on past 14 days
-                            if(i === 14) {
-                                setChangePast14days(sum)
+                setTimeout(() => {
+                    fetchPopulation(hcd).then(hcd => {
+                        for(let item in pastDays) {
+                        
+                            if(pastDays[item]['key'] === key) {
+                                
+                                let sum = pastDays[item].cases[14];
+    
+                                // Set total change on past 14 days
+                                if(i === 14) {
+                                    setChangePast14days(sum)
+                                    break;
+                                }
+                        
+                                let per100k = sum / (hcd.population / 100000)
+                                per100k = Math.round(per100k);
+            
+                                let element = document.getElementById(hcd['key']);
+                                if(element) {
+                                    if(per100k >= 1 && per100k < 10) {
+                                        element.classList.add("caseClass0");
+                                    } else if(per100k >= 10 && per100k < 25) {
+                                        element.classList.add("caseClass10");
+                                    } else if(per100k >= 25 && per100k < 100) {
+                                        element.classList.add("caseClass25");
+                                    } else if(per100k >= 100 && per100k < 500) {
+                                        element.classList.add("caseClass100");
+                                    } else if(per100k >= 500) {
+                                        element.classList.add("caseClass500");
+                                    }
+                                }
                                 break;
                             }
-                    
-                            let per100k = sum / (hcd.population / 100000)
-                            per100k = Math.round(per100k);
-        
-                            let element = document.getElementById(hcd['key']);
-                            if(element) {
-                                if(per100k >= 1 && per100k < 10) {
-                                    element.classList.add("caseClass0");
-                                } else if(per100k >= 10 && per100k < 25) {
-                                    element.classList.add("caseClass10");
-                                } else if(per100k >= 25 && per100k < 100) {
-                                    element.classList.add("caseClass25");
-                                } else if(per100k >= 100 && per100k < 500) {
-                                    element.classList.add("caseClass100");
-                                } else if(per100k >= 500) {
-                                    element.classList.add("caseClass500");
-                                }
-                            }
-                            break;
                         }
-                    }
-                });
+                    });
+                }, i*30);
+
+                
             }
         });
     }
