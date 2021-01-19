@@ -10,6 +10,7 @@ function CumulativeGraph(props) {
     function setup() {
         let weeklyHcdCases = props.selectedCity.weeklyHcdCases;
         let dps = [];
+        let sum = 0;
         
         for(let i in weeklyHcdCases) {
             if(weeklyHcdCases[i] === undefined) continue;
