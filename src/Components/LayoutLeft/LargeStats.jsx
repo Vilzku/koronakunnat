@@ -12,7 +12,7 @@ function LargeStats(props) {
     if(hcdList.length === 0 || vaccinations.length === 0) {
         return (
             <div className="LargeStats">
-                <FontAwesomeIcon icon={faSpinner} className="LoadIcon" />
+                <FontAwesomeIcon icon={faSpinner} spin className="LoadIcon" />
             </div>
         );
     }

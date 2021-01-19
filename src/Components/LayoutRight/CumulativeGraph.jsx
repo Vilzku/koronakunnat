@@ -1,39 +1,69 @@
 import React from 'react';
 
 import CanvasJSReact from '../../Assets/canvasjs.react';
+
 var CanvasJS = CanvasJSReact.CanvasJS;
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
-function CumulativeGraph(props) {
 
+function CumulativeGraph(props) {
+    let weeklyHcdCases = props.selectedCity.weeklyHcdCases;
+    /*if(!selectedCity) return (<div className="CumulativeGraph"></div>)*/
+    /*let weeklyHcdCases = props.weeklyHcdCases;*/
+    let dps = [];
+    let week = 1;
+    let sum = 0;
+    /*console.log(selectedCity.area);*/
+    
+    console.log(weeklyHcdCases);
+    
+        for(let i in weeklyHcdCases) {
+            if(weeklyHcdCases[i] === undefined) {
+                continue;
+            }
+            /*console.log({x: weeklyHcdCases[i], y: week});*/
+            sum += parseInt(weeklyHcdCases[i])
+            dps.push({x: parseInt(week), y: parseInt(sum)})
+        
+            week++;
+            
+        }
+        dps.pop()
+    
+      
+        console.log(JSON.stringify(dps));
+    
+    
+    
+    
     const options = {
         theme: "light2",
         animationEnabled: true,
         exportEnabled: true,
         title: {
-            text: "Number of iPhones Sold"
+            
+            text:  "SHP korona tapaukset"
+        },
+
+        axisX:{
+            reversed: false
         },
         axisY: {
-            title: "Number of iPhones ( in Million )"
+            title: ""
         },
         data: [
         {
             type: "area",
-            xValueFormatString: "YYYY",
-            yValueFormatString: "#,##0.## Million",
-            dataPoints: [
-                { x: new Date(2017, 0), y: 7.6},
-                { x: new Date(2016, 0), y: 7.3},
-                { x: new Date(2015, 0), y: 6.4},
-                { x: new Date(2014, 0), y: 5.3},
-                { x: new Date(2013, 0), y: 4.5},
-                { x: new Date(2012, 0), y: 3.8},
-                { x: new Date(2011, 0), y: 3.2}
-            ]
+            xValueFormatString: "Viikko #",
+            yValueFormatString: "#### Tapausta",
+            dataPoints: dps
+              
         }
         ]
     }
 
+    
+    
     return (
         <div className="CumulativeGraph">
 

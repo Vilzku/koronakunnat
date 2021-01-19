@@ -6,7 +6,7 @@
   display: flex;
   flex-direction: column;
   color: rgb(228, 63, 90);
-  background-color: rgb(31, 51, 101);
+  background-color: rgb(41, 55, 91);
 }
 
 /******************************************************************************/
@@ -17,11 +17,10 @@
   flex-shrink: 0;
   display: grid;
   padding: 1rem;
+  text-align: center;
+  display: block;
 }
 
-.LargeStats .text {
-  text-align: center;
-}
 
 .LargeStats * {
   text-align: center;
@@ -54,6 +53,15 @@
   visibility: visible;
 }
 
+.LargeStats {
+  -webkit-animation: rotation 2s infinite linear;
+}
+
+@-webkit-keyframes rotation {
+  from {-webkit-transform: rotate(0deg);}
+  to   {-webkit-transform: rotate(359deg);}
+}
+
 /******************************************************************************/
 
 .List {
@@ -69,6 +77,10 @@
   cursor: pointer;
   border-bottom: 1px solid #e43f5a;
   margin: 0 1rem 0rem 1rem;
+}
+
+.List.fa-5x {
+  text-align: center;
 }
 
 .List .item:first-child {
@@ -104,6 +116,10 @@
   position: sticky;
   top: 0;
   background-color: rgb(41, 55, 91);
+}
+
+input:focus {
+  outline: none;
 }
 
 /******************************************************************************/
