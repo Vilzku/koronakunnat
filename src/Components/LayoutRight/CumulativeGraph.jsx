@@ -48,6 +48,7 @@ function CumulativeGraph(props) {
 
         axisX:{
             reversed: false,
+
             tickColor: "#525252",
             labelFontColor: "#e43f5a",
             lineColor: "#525252"
@@ -61,7 +62,7 @@ function CumulativeGraph(props) {
         data: [
         {
             color: "#e43f5a",
-            fillOpacity: 0.8,
+            fillOpacity: 0.6,
             type: "area",
             xValueFormatString: "Viikko #",
             yValueFormatString: "#### Tapausta",

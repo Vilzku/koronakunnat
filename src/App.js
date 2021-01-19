@@ -71,7 +71,8 @@ function App() {
         selectedCity={selectedCity}
         selectedHcd={selectedHcd}
         onButtonClicked={selectCity}
-        hcdList={hcdList}/>
+        hcdList={hcdList}
+        vaccinations={vaccinations}/>
     </div>
   );
 }

@@ -103,12 +103,29 @@
   background-color: #162447;
 }
 
+.LocalStats h1 {
+  font-size: 6rem;
+  margin: 4rem;
+}
+
+.LocalStats h2 {
+  margin-left: 4rem;
+}
+
 /******************************************************************************/
 
 .HcdStats {
   width: 50%;
   height: 50%;
   background-color: #162447;
+}
+
+.HcdStats h1 {
+  margin-left: 4rem;
+}
+
+.HcdStats h2 {
+  margin-left: 4rem;
 }
 
 /******************************************************************************/

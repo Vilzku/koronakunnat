@@ -33,12 +33,15 @@ function LayoutRight(props) {
                     size="2x"
                     className="closeIcon"
                     onClick={ () => props.onButtonClicked(null) }/>
-                <LocalStats />
-                <HcdStats />
-                <CumulativeGraph selectedCity={props.selectedCity}
-                                weeklyHcdCases={props.weeklyHcdCases}/>
-                <WeeklyGraph selectedCity={props.selectedCity}
-                             weeklyHcdCases={props.weeklyHcdCases}/>
+                <LocalStats
+                    selectedCity={props.selectedCity}
+                    vaccinations={props.vaccinations}/>
+                <HcdStats
+                    selectedCity={props.selectedCity}/>
+                <CumulativeGraph
+                    selectedCity={props.selectedCity}/>
+                <WeeklyGraph
+                    selectedCity={props.selectedCity}/>
             </div>
         );
     }
