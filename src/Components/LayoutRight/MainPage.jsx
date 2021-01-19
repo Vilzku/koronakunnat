@@ -1,7 +1,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { ReactComponent as Map } from '../../Assets/map.svg';
-import { fetchPopulation, fetchPast3Weeks, fetchPast14days } from '../../api.js';
+import { fetchPopulation, fetchPast14days } from '../../api.js';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircle } from '@fortawesome/free-solid-svg-icons'
@@ -14,32 +14,7 @@ function MainPage(props) {
 
     function mapSetup() {
 
-        // Parsing the last 14 days here since the api function just sucks
-        function fetchPastDays() {
-            return new Promise(resolve => {
-                fetchPast3Weeks().then(data => {
-                    fetchPast14days(data).then(list => {
-                        for(let areaKey in list) {
-                            let area = list[areaKey];
-                    
-                            area.cases = [];
-                            
-                            for(let key in area) {
-                              if(key === 'key' || key === 'cases') continue;
-                              for(let i in area[key]) {
-                                if(!area[key][i]) break;
-                                if(area.cases.length === 14) area.cases.shift()
-                                area.cases.push(area[key][i])
-                              }
-                            }
-                        }
-                        return resolve(list)
-                    });
-                });
-            })
-        }
-
-        fetchPastDays().then(pastDays => {
+        fetchPast14days().then(pastDays => {
             for(let i=0; i<hcdList.length; i++) {
 
                 // Skip some DHC since map is bad
@@ -52,14 +27,11 @@ function MainPage(props) {
                     for(let item in pastDays) {
                     
                         if(pastDays[item]['key'] === key) {
-                            let cases = pastDays[item]['cases'];
-                            let sum = cases.reduce((a, b) => {
-                                return parseInt(a) + parseInt(b);
-                            }, 0);
+                            
+                            let sum = pastDays[item].cases[14];
 
                             // Set total change on past 14 days
                             if(i === 14) {
-                                console.log(cases)
                                 setChangePast14days(sum)
                                 break;
                             }

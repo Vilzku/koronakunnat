@@ -1,6 +1,6 @@
 
 import React, { useEffect, useState } from 'react';
-import { fetchAreaData, fetchLocalData, fetchVaccinationData, fetchPast14days } from './api.js';
+import { fetchAreaData, fetchLocalData, fetchVaccinationData } from './api.js';
 
 import './App.css';
 import LayoutLeft from './Components/LayoutLeft';

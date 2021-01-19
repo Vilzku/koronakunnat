@@ -289,30 +289,14 @@ export function fetchPast3Weeks(noRetry) {
   })
 }
 
-  
-export function fetchPast14days(keyList, noRetry) {
 
-/*
-  Returns a list of objects containing key and cases for past 3 weeks for parsing
-
-  {
-    key: 123456,
-    235436: [0, 1, 2, 3, ..., 6],
-    232336: [0, 1, 2, 3, ..., 6],
-    234566: [0, 1, 2, 3, ..., 6],
-  }
-*/
-
-  let list = [];
+function fetchWeekDays(weekKey, areaList, noRetry) {
 
   return new Promise(resolve => {
   
-    // Iterate through 3 weeks
-    for(let index in keyList) {
-
-      const weekKey = keyList[index];
-
       const url = 'https://sampo.thl.fi/pivot/prod/fi/epirapo/covid19case/fact_epirapo_covid19case.json?row=hcdmunicipality2020-445222&column=dateweek20200101-' + weekKey;
+      let list = [];
+      if(areaList) list = areaList;
 
       fetch(url)
         .then(response => {
@@ -343,27 +327,66 @@ export function fetchPast14days(keyList, noRetry) {
                 };
               }
               
-              console.log("api:fetchPast14days: week " + weekKey +" loaded")
+              console.log("api:fetchWeekDays: week " + weekKey +" loaded")
+              return resolve(list);
 
-              // Return on last iteration
-              if(list[0][keyList[0]] && list[0][keyList[1]] && list[0][keyList[2]]) {  
-                return resolve(list);
-              }
 
             }) // Try again if error is catched, apparently not working
             .catch(err => {
               console.log(err);
               setTimeout(() => {
-                return (!noRetry ? fetchPast14days(keyList, true) : []);
+                return (!noRetry ? fetchWeekDays(weekKey, areaList, true) : []);
               }, 1000);
             });
         })
         .catch(err => {
           console.log(err);
           setTimeout(() => {
-            return (!noRetry ? fetchPast14days(keyList, true) : []);
+            return (!noRetry ? fetchWeekDays(weekKey, areaList, true) : []);
           }, 1000);
         });
-    }
+    
   })
+}
+
+
+export function fetchPast14days() {
+
+  return new Promise(resolve => {
+    fetchPast3Weeks().then(keyList => {
+      fetchWeekDays(keyList[0]).then(data => {
+        fetchWeekDays(keyList[1], data).then(data => {
+          fetchWeekDays(keyList[2], data).then(data => {
+
+          
+            for(let areaKey in data) {
+              let area = data[areaKey];
+      
+              area.cases = [];
+              
+              for(let key in area) {
+                if(key === 'key' || key === 'cases') continue;
+                for(let i in area[key]) {
+                  if(!area[key][i]) break;
+                  if(area.cases.length === 14) area.cases.shift()
+                  area.cases.push(area[key][i])
+                }
+              }
+            }
+
+            for(let item in data) {
+              let cases = data[item]['cases'];
+              let sum = cases.reduce((a, b) => {
+                  return parseInt(a) + parseInt(b);
+              }, 0);
+              data[item].cases.push(sum);
+            }
+
+            return resolve(data);
+
+          });
+        });
+      });
+    });
+  });
 }
