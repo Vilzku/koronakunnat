@@ -61,7 +61,7 @@ function CumulativeGraph(props) {
         data: [
         {
             color: "#e43f5a",
-            fillOpacity: 0.4,
+            fillOpacity: 0.8,
             type: "area",
             xValueFormatString: "Viikko #",
             yValueFormatString: "#### Tapausta",

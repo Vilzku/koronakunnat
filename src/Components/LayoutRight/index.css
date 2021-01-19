@@ -10,6 +10,10 @@
   color: rgb(228, 63, 90);
 }
 
+.LayoutRight .closeIcon:active {
+  color:#e22e4b
+}
+
 .LayoutRight .closeIcon,
 .LayoutRight .helpIcon {
   position: absolute;
@@ -73,13 +77,13 @@
 }
 
 .MainPage .caseClass100 {
-  fill: #e43f5a;
-  color: #e43f5a;
+  fill:#a01a30;
+  color: #a01a30;
 }
 
 .MainPage .caseClass500 {
-  fill: #d3223f;
-  color: #d3223f;
+  fill: #4c0c17;
+  color: #4c0c17;
 }
 
 .MainPage .legend {
