@@ -5,37 +5,51 @@ var CanvasJS = CanvasJSReact.CanvasJS;
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 function WeeklyGraph(props) {
+    let weeklyHcdCases = props.selectedCity.weeklyHcdCases;
+    let dps = [];
+    let week = 1;
+
+
+    console.log(weeklyHcdCases);
+    
+        for(let i in weeklyHcdCases) {
+            if(weeklyHcdCases[i] === undefined) {
+                continue;
+            }
+            /*console.log({x: weeklyHcdCases[i], y: week});*/
+           
+            dps.push({x: parseInt(++i), y: parseInt(weeklyHcdCases[i])})
+        
+            week++;
+            
+        }
+        dps.pop()
+    
+      
+        console.log(JSON.stringify(dps));
 
     const options = {
+        theme: "dark2",
+        backgroundColor: "#162447",
         animationEnabled: true,
-        exportEnabled: true,
-        theme: "light2", //"light1", "dark1", "dark2"
+        exportEnabled: false,
         title:{
-            text: "Simple Column Chart with Index Labels"
+            text: "SHP viikottaiset tartunnat",
+            fontColor: "#e43f5a"
         },
         axisY: {
             includeZero: true
         },
         data: [{
+            color: "#e43f5a",
+            fillOpacity: 0.9,
             type: "column", //change type to bar, line, area, pie, etc
             //indexLabel: "{y}", //Shows y value on all Data Points
+            xValueFormatString: "Viikko #",
+            yValueFormatString: "#### Tapausta",
             indexLabelFontColor: "#5A5757",
             indexLabelPlacement: "outside",
-            dataPoints: [
-                { x: 10, y: 71 },
-                { x: 20, y: 55 },
-                { x: 30, y: 50 },
-                { x: 40, y: 65 },
-                { x: 50, y: 71 },
-                { x: 60, y: 68 },
-                { x: 70, y: 38 },
-                { x: 80, y: 92, indexLabel: "Highest" },
-                { x: 90, y: 54 },
-                { x: 100, y: 60 },
-                { x: 110, y: 21 },
-                { x: 120, y: 49 },
-                { x: 130, y: 36 }
-            ]
+            dataPoints: dps
         }]
     }
 

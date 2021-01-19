@@ -11,7 +11,7 @@ function LargeStats(props) {
     // Loading icon
     if(hcdList.length === 0 || vaccinations.length === 0) {
         return (
-            <div className="LargeStats">
+            <div className="LargeStats fa-2x">
                 <FontAwesomeIcon icon={faSpinner} spin className="LoadIcon" />
             </div>
         );
