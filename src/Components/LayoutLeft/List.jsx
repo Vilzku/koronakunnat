@@ -27,7 +27,11 @@ function List(props) {
 
     return (
         <div className="List">
-            <input value={filter} onChange={onFilterChange} placeholder="Haku"></input>
+
+            <div className="inputBackground">
+                <input value={filter} onChange={onFilterChange} placeholder="Haku"></input>
+            </div>
+            
             <div className="list-items">
                 { cityList.map(city => {
                     return (
@@ -40,6 +44,7 @@ function List(props) {
                     </li>)
                 }) }
             </div>
+            
         </div>
     );
 }

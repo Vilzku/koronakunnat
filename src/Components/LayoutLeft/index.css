@@ -71,6 +71,10 @@
   margin: 0 1rem 0rem 1rem;
 }
 
+.List .item:first-child {
+  margin-top: 0.3rem;
+}
+
 .List .item:hover {
   color: white;
   background-color: #e43f5a;
@@ -78,13 +82,15 @@
   padding: 1rem;
 }
 
+.List .item:first-child:hover {
+  margin: 0.3rem 0 0 0;
+}
+
 .List span {
   float: right;
 }
 
-input {
-  position: sticky;
-  top: 0.5rem;
+.List input {
   width: calc(100% - 2.2rem);
   margin: 0.5rem 0.5rem 0 0.5rem;
   padding: 0.5rem;
@@ -92,6 +98,12 @@ input {
   background-color: rgb(41, 55, 91);
   font-weight: bold;
   border: 1px solid rgb(228, 63, 90);
+}
+
+.List .inputBackground {
+  position: sticky;
+  top: 0;
+  background-color: rgb(41, 55, 91);
 }
 
 /******************************************************************************/
