@@ -7,9 +7,9 @@ function WeeklyGraph(props) {
 
     if(!props.selectedCity) return(<div className="WeeklyGraph"></div>);
 
-    let weeklyHcdCases = props.selectedCity.weeklyHcdCases;
-
     function setup() {
+        let weeklyHcdCases = props.selectedCity.weeklyHcdCases;
+
         let dps = [];
         for(let i in weeklyHcdCases) {
             if(weeklyHcdCases[i] === undefined) continue;
@@ -52,11 +52,12 @@ function WeeklyGraph(props) {
         return options;
     }
     
+    let options = setup()
 
     return (
         <div className="WeeklyGraph">
 
-            <CanvasJSChart options = {setup()} />
+            <CanvasJSChart options = {options} />
 
 		</div>
     );
