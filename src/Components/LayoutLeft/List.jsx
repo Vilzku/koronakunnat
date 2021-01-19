@@ -10,9 +10,9 @@ function List(props) {
     // Loading icon
     if(cityList.length === 0) {
         return (
-            <div className="List">
-                <FontAwesomeIcon icon={faSpinner} className="LoadIcon" />
-            </div>
+            <div className="List fa-5x">
+                <FontAwesomeIcon icon={faSpinner} spin className="LoadIcon"/> 
+            </div> 
         );
     }
 
