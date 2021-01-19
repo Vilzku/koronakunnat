@@ -17,8 +17,7 @@
   flex-shrink: 0;
   display: grid;
   padding: 1rem;
-  text-align: center;
-  display: block;
+  min-height: 9.1rem;
 }
 
 
@@ -53,13 +52,9 @@
   visibility: visible;
 }
 
-.LargeStats {
-  -webkit-animation: rotation 2s infinite linear;
-}
-
-@-webkit-keyframes rotation {
-  from {-webkit-transform: rotate(0deg);}
-  to   {-webkit-transform: rotate(359deg);}
+.LargeStats.fa-2x {
+  text-align: center;
+  display: block;
 }
 
 /******************************************************************************/
@@ -81,6 +76,7 @@
 
 .List.fa-5x {
   text-align: center;
+  padding: 13rem 0;
 }
 
 .List .item:first-child {
@@ -118,7 +114,7 @@
   background-color: rgb(41, 55, 91);
 }
 
-input:focus {
+.List input:focus {
   outline: none;
 }
 
