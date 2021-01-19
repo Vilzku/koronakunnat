@@ -37,7 +37,7 @@ function LayoutRight(props) {
                     selectedCity={props.selectedCity}
                     vaccinations={props.vaccinations}/>
                 <HcdStats
-                    selectedCity={props.selectedCity}/>
+                    selectedHcd={props.selectedHcd}/>
                 <CumulativeGraph
                     selectedCity={props.selectedCity}/>
                 <WeeklyGraph

@@ -11,7 +11,7 @@
 }
 
 .LayoutRight .closeIcon:active {
-  color:#e22e4b
+  color: #e22e4b;
 }
 
 .LayoutRight .closeIcon,
@@ -77,7 +77,7 @@
 }
 
 .MainPage .caseClass100 {
-  fill:#a01a30;
+  fill: #a01a30;
   color: #a01a30;
 }
 
@@ -108,7 +108,8 @@
   margin: 4rem;
 }
 
-.LocalStats h2 {
+.LocalStats h2,
+.LocalStats p {
   margin-left: 4rem;
 }
 
@@ -124,7 +125,8 @@
   margin-left: 4rem;
 }
 
-.HcdStats h2 {
+.HcdStats h2,
+.HcdStats p {
   margin-left: 4rem;
 }
 

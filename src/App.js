@@ -33,7 +33,7 @@ function App() {
           temp_list = [...temp_list, ...cityData]
           temp_list.sort((a, b) => (a.name > b.name) ? 1 : -1)
           setCityList(temp_list);
-        });
+        })
       }
     });
   }
