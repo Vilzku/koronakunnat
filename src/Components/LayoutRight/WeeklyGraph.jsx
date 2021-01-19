@@ -38,19 +38,19 @@ function WeeklyGraph(props) {
             fontColor: "#e43f5a"
         },
         axisX:{
-            tickColor: "#e43f5a",
-            gridColor: "#e43f5a",
-            labelFontColor: "#e43f5a"
+            labelFontColor: "#e43f5a",
+            lineColor: "#e43f5a",
+            tickColor: "#525252"
         },
         axisY: {
             includeZero: true,
-            gridColor: "#e43f5a",
-            tickColor: "#e43f5a",
+            gridColor: "#525252",
+            tickColor: "#525252",
             labelFontColor: "#e43f5a"
         },
         data: [{
             color: "#e43f5a",
-            fillOpacity: 0.9,
+            fillOpacity: 0.8,
             type: "column", //change type to bar, line, area, pie, etc
             //indexLabel: "{y}", //Shows y value on all Data Points
             xValueFormatString: "Viikko #",

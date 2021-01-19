@@ -48,21 +48,20 @@ function CumulativeGraph(props) {
 
         axisX:{
             reversed: false,
-            tickColor: "#e43f5a",
-            gridColor: "#e43f5a",
-            tickColor: "#e43f5a",
-            labelFontColor: "#e43f5a"
+            tickColor: "#525252",
+            labelFontColor: "#e43f5a",
+            lineColor: "#525252"
         },
         axisY: {
             title: "",
-            gridColor: "#e43f5a",
-            tickColor: "#e43f5a",
+            gridColor: "#525252",
+            tickColor: "#525252",
             labelFontColor: "#e43f5a"
         },
         data: [
         {
             color: "#e43f5a",
-            fillOpacity: 0.6,
+            fillOpacity: 0.4,
             type: "area",
             xValueFormatString: "Viikko #",
             yValueFormatString: "#### Tapausta",
