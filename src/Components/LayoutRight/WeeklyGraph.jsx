@@ -32,9 +32,10 @@ function WeeklyGraph(props) {
         theme: "dark2",
         backgroundColor: "#162447",
         animationEnabled: true,
-        exportEnabled: true,
+        exportEnabled: false,
         title:{
-            text: "SHP viikottaiset tartunnat"
+            text: "SHP viikottaiset tartunnat",
+            fontColor: "#e43f5a"
         },
         axisY: {
             includeZero: true
