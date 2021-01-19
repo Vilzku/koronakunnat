@@ -10,13 +10,13 @@ function WeeklyGraph(props) {
     let week = 1;
 
 
-    console.log(weeklyHcdCases);
+    
     
         for(let i in weeklyHcdCases) {
             if(weeklyHcdCases[i] === undefined) {
                 continue;
             }
-            /*console.log({x: weeklyHcdCases[i], y: week});*/
+           
            
             dps.push({x: parseInt(++i), y: parseInt(weeklyHcdCases[i])})
         
@@ -26,7 +26,7 @@ function WeeklyGraph(props) {
         dps.pop()
     
       
-        console.log(JSON.stringify(dps));
+     
 
     const options = {
         theme: "dark2",
