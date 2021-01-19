@@ -116,6 +116,14 @@
   background-color: #162447;
 }
 
+.HcdStats h1 {
+  margin-left: 4rem;
+}
+
+.HcdStats h2 {
+  margin-left: 4rem;
+}
+
 /******************************************************************************/
 
 .CumulativeGraph {
