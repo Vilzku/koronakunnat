@@ -4,6 +4,7 @@ import { fetchPopulation, fetchPast14days } from '../../api.js';
 
 function LocalStats(props) {
 
+    if(!props.selectedCity) return(<div className="LocalStats"></div>);
 
     let selectedCity = props.selectedCity;
 

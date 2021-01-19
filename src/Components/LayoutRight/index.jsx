@@ -35,10 +35,10 @@ function LayoutRight(props) {
                     onClick={ () => props.onButtonClicked(null) }/>
                 <LocalStats selectedCity={props.selectedCity}/>
                 <HcdStats />
-                <CumulativeGraph selectedCity={props.selectedCity}
-                                weeklyHcdCases={props.weeklyHcdCases}/>
-                <WeeklyGraph selectedCity={props.selectedCity}
-                             weeklyHcdCases={props.weeklyHcdCases}/>
+                <CumulativeGraph
+                    selectedCity={props.selectedCity}/>
+                <WeeklyGraph
+                    selectedCity={props.selectedCity}/>
             </div>
         );
     }
