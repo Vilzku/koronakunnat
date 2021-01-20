@@ -123,13 +123,17 @@
 }
 
 .LocalStats h1 {
-  font-size: 6rem;
-  margin: 4rem;
+  font-size: 2vw;
+  margin-left: 4rem;
+  margin-top: 4rem;
 }
 
-.LocalStats h2,
+.LocalStats h2{
+  margin-left: 4rem;
+}
 .LocalStats p {
   margin-left: 4rem;
+  font-size: 1vw;
 }
 
 /******************************************************************************/
@@ -141,12 +145,15 @@
 }
 
 .HcdStats h1 {
+  font-size: 2vw;
+  margin-top: 4rem;
   margin-left: 4rem;
 }
 
 .HcdStats h2,
 .HcdStats p {
   margin-left: 4rem;
+  font-size: 1vw;
 }
 
 /******************************************************************************/

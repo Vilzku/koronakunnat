@@ -31,8 +31,14 @@
 
 .LargeStats .tooltip {
   display: inline;
-  border-bottom: 1px dotted rgb(228, 63, 90);
+  color: #666666;
+  border-bottom: 1px dotted #666666;
   cursor: help;
+}
+
+.LargeStats .tooltip:hover {
+  color: rgb(228, 63, 90);
+  border-bottom: 1px dotted rgb(228, 63, 90);
 }
 
 .LargeStats .tooltip .tooltiptext {
@@ -46,11 +52,17 @@
   padding: 8px;
   border-radius: 5px;
   color: rgb(228, 63, 90);
+  opacity: 0;
+  transition: opacity 0.3s;
 }
 
 .LargeStats .tooltip:hover .tooltiptext {
   visibility: visible;
+  opacity: 1;
+  transition: opacity 0.5s;
 }
+
+
 
 .LargeStats.fa-2x {
   text-align: center;
