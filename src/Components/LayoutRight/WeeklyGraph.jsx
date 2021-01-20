@@ -1,14 +1,22 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 import CanvasJSReact from '../../Assets/canvasjs.react';
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 function WeeklyGraph(props) {
 
-    if(!props.selectedCity) return(<div className="WeeklyGraph"></div>);
+    const [options, setOptions] = useState({});
+
+    const selectedCity = props.selectedCity;
+
+    useEffect(() => {
+        setup();
+    }, [selectedCity])
+
+    if(!selectedCity) return(<div className="WeeklyGraph"></div>);
 
     function setup() {
-        let weeklyHcdCases = props.selectedCity.weeklyHcdCases;
+        let weeklyHcdCases = selectedCity.weeklyHcdCases;
 
         let dps = [];
         for(let i in weeklyHcdCases) {
@@ -17,7 +25,7 @@ function WeeklyGraph(props) {
         }
         dps.pop()
     
-        const options = {
+        const ops = {
             theme: "dark2",
             backgroundColor: "#162447",
             animationEnabled: true,
@@ -49,10 +57,8 @@ function WeeklyGraph(props) {
                 dataPoints: dps
             }]
         }
-        return options;
+        setOptions(ops);
     }
-    
-    let options = setup()
 
     return (
         <div className="WeeklyGraph">

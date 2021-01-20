@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react';
 
-import { fetchPopulation, fetchPast14days } from '../../api.js';
-
 function LocalStats(props) {
 
-    if(!props.selectedCity) return(<div className="LocalStats"></div>);
+    const [change, setChange] = useState(0);
 
     let selectedCity = props.selectedCity;
 
+    useEffect(() => {
+        calculateChange();
+    }, [selectedCity]);
+    
     if(!selectedCity) return(<div className="LocalStats"></div>)
 
     function calculateChange() {
@@ -19,10 +21,8 @@ function LocalStats(props) {
         }
         if(lastWeeks[0] === "..") lastWeeks[0] = '0';
         if(lastWeeks[1] === "..") lastWeeks[1] = '0';
-        return parseInt(lastWeeks[0]) + parseInt(lastWeeks[1])
+        setChange(parseInt(lastWeeks[0]) + parseInt(lastWeeks[1]));
     }
-    
-    let change = calculateChange();
 
     return (
         <div className="LocalStats">

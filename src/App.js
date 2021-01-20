@@ -40,11 +40,12 @@ function App() {
 
   // Fetch data for specific city
   function selectCity(id) {
-    id === null ? setSelectedCity(null) :
+    if(id === null) setSelectedCity(null);
     cityList.forEach(city => {
       if(city.key === id) {
         fetchLocalData(city.key, city.hcd).then(data => {
           setSelectedCity(data);
+          console.log("yeeeeet")
         })
         fetchLocalData(city.hcd, ALL_AREAS_ID).then(data => {
           setSelectedHcd(data);

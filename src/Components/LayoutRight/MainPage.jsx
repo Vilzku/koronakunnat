@@ -13,19 +13,24 @@ function MainPage(props) {
 
     let hcdList = props.hcdList;
 
-    function mapSetup() {
+    useEffect(() => {
+        mapSetup();
+        rollingNumber();
+    }, [hcdList]);
 
+    if(!hcdList) return(<div className="MainPage"></div>);
+
+    function mapSetup() {
         fetchPast14days('445222').then(pastDays => {
             for(let i=0; i<hcdList.length; i++) {
 
                 // Skip some DHC since map is bad
                 if(i === 8 || i === 10) continue;
-    
                 let hcd = hcdList[i];
                 let key = hcd['key'];
     
-                setTimeout(() => {
-                    fetchPopulation(hcd).then(hcd => {
+                fetchPopulation(hcd).then(hcd => {
+                    setTimeout(() => {
                         for(let item in pastDays) {
                         
                             if(pastDays[item]['key'] === key) {
@@ -58,10 +63,8 @@ function MainPage(props) {
                                 break;
                             }
                         }
-                    });
-                }, i*20);
-
-                
+                    }, i*20);
+                });
             }
         });
     }
@@ -83,14 +86,10 @@ function MainPage(props) {
 
             setRandomNumber(a+b+c+d);
         }
+        setRandomNumber("0000")
     }
 
-    
 
-    useEffect(() => {
-        mapSetup();
-        rollingNumber();
-    }, [hcdList]);
 
     return (
         <div className="MainPage">

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
+import { ReactComponent as Map } from '../../Assets/map.svg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSyringe } from '@fortawesome/free-solid-svg-icons'
 
@@ -8,9 +9,15 @@ function HcdStats(props) {
     const [change, setChange] = useState(0);
     const [vaccinations, setVaccinations] = useState({});
 
-    
-
     const selectedHcd = props.selectedHcd;
+
+    useEffect(() => {
+        showMap();
+        calculateChange();
+        getVaccinations();
+    });
+
+    if(!props.selectedHcd) return(<div className="HcdStats"></div>);
 
     function calculateChange() {
         if(!selectedHcd) return;
@@ -25,7 +32,7 @@ function HcdStats(props) {
         setChange(parseInt(lastWeeks[0]) + parseInt(lastWeeks[1]));
     }
 
-    function getShots() {
+    function getVaccinations() {
         const vacList = props.vaccinations;
         if(!vacList) return;
         if(!selectedHcd) return;
@@ -34,24 +41,28 @@ function HcdStats(props) {
             if(!vacList[i].hcd) continue;
             vacList[i].hcd.forEach(area => {
                 if(area === selectedHcd.key) {
-                    console.log(JSON.stringify(vacList[i].shots));
                     setVaccinations(vacList[i]);
                 }
             });
         }
-
     }
 
-    useEffect(() => {
-        calculateChange();
-        getShots();
-    });
-
-
-    if(!props.selectedHcd) return(<div className="HcdStats"></div>);
+    function showMap() {
+        if(!selectedHcd) return;
+        let previous = document.getElementsByClassName('show');
+        if(previous.length > 0) previous[0].classList.remove('show');
+        const mapArea = document.getElementById(selectedHcd.key);
+        if(mapArea) mapArea.classList.add('show');
+    }
 
     return (
         <div className="HcdStats">
+
+            <div className="mapContainer">
+                <Map id="Map" />
+            </div>
+        
+
             <h1 className="title">{ selectedHcd.area }</h1>
             <h2 className="weeklyCases">{ selectedHcd.weeklyCases[105] } tartuntaa</h2>
             <h2 className="change">{ change } uutta tartuntaa</h2>
@@ -60,7 +71,9 @@ function HcdStats(props) {
                 <FontAwesomeIcon icon={faSyringe} className="SyringeIcon" />
                 { " " + vaccinations.shots }
             </h2>
-            <p>rokotusta annettu { vaccinations.area }:n erikoisvastuualueella</p>
+            <p>rokotusta annettu 
+                { vaccinations.area }:n erikoisvastuualueella</p>
+
         </div>
     );
 }

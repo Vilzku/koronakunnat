@@ -149,6 +149,20 @@
   margin-left: 4rem;
 }
 
+.HcdStats svg {
+  height: 20rem;
+  width: 20rem;
+}
+
+.HcdStats path,
+.HcdStats polygon {
+  opacity: 10%;
+}
+
+.HcdStats #Map .show {
+  opacity: 100%;
+}
+
 /******************************************************************************/
 
 .CumulativeGraph {

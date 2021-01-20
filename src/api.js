@@ -61,15 +61,15 @@ export function fetchAreaData(id, noRetry) {
           .catch(err => {
             console.log(err);
             setTimeout(() => { 
-              return (!noRetry ? fetchAreaData(id, true) : []);
-            }, 1000);
+              return resolve(!noRetry ? fetchAreaData(id, true) : []);
+            }, 500);
           })
       })
       .catch(err => {
         console.log(err);
         setTimeout(() => {
-          return (!noRetry ? fetchAreaData(id, true) : []);
-        }, 1000);
+          return resolve(!noRetry ? fetchAreaData(id, true) : []);
+        }, 500);
       })
   })
 }
@@ -132,15 +132,15 @@ export function fetchLocalData(id, hcdId, noRetry) {
           .catch(err => {
             console.log(err);
             setTimeout(() => { 
-              return (!noRetry ? fetchLocalData(id, hcdId, true) : null);
-            }, 1000);
+              return resolve(!noRetry ? fetchLocalData(id, hcdId, true) : null);
+            }, 500);
           })
       })
       .catch(err => {
         console.log(err);
         setTimeout(() => {
-          return (!noRetry ? fetchLocalData(id, hcdId, true) : null);
-        }, 1000);
+          return resolve(!noRetry ? fetchLocalData(id, hcdId, true) : null);
+        }, 500);
       })
   })
 }
@@ -192,15 +192,15 @@ export function fetchVaccinationData(noRetry) {
           .catch(err => {
             console.log(err);
             setTimeout(() => { 
-              return (!noRetry ? fetchVaccinationData(true) : []);
-            }, 1000);
+              return resolve(!noRetry ? fetchVaccinationData(true) : []);
+            }, 500);
           })
       })
       .catch(err => {
         console.log(err);
         setTimeout(() => {
-          return (!noRetry ? fetchVaccinationData(true) : []);
-        }, 1000);
+          return resolve(!noRetry ? fetchVaccinationData(true) : []);
+        }, 500);
       })
   })
 }
@@ -215,7 +215,7 @@ export function fetchPopulation(area, noRetry) {
     x: y,
     y: z, 
     key: "123456",
-    population: "100000" <-- NEW
+    population: "123465" <-- NEW
   }
 */
   
@@ -239,15 +239,15 @@ export function fetchPopulation(area, noRetry) {
           .catch(err => {
             console.log(err);
             setTimeout(() => { 
-              return (!noRetry ? fetchAreaData(area, true) : area);
-            }, 1000);
+              return resolve(!noRetry ? fetchAreaData(area, true) : area);
+            }, 500);
           })
       })
       .catch(err => {
         console.log(err);
         setTimeout(() => {
-          return (!noRetry ? fetchAreaData(area, true) : area);
-        }, 1000);
+          return resolve(!noRetry ? fetchAreaData(area, true) : area);
+        }, 500);
       })
   })
 }
@@ -290,15 +290,15 @@ export function fetchPast3Weeks(noRetry) {
           .catch(err => {
             console.log(err);
             setTimeout(() => { 
-              return (!noRetry ? fetchPast3Weeks(true) : []);
-            }, 1000);
+              return resolve(!noRetry ? fetchPast3Weeks(true) : []);
+            }, 500);
           })
       })
       .catch(err => {
         console.log(err);
         setTimeout(() => {
-          return (!noRetry ? fetchPast3Weeks(true) : []);
-        }, 1000);
+          return resolve(!noRetry ? fetchPast3Weeks(true) : []);
+        }, 500);
       })
   })
 }
@@ -349,15 +349,15 @@ function fetchWeekDays(weekKey, areaID, areaList, noRetry) {
             .catch(err => {
               console.log(err);
               setTimeout(() => {
-                return (!noRetry ? fetchWeekDays(weekKey, areaID, areaList, true) : []);
-              }, 1000);
+                return resolve(!noRetry ? fetchWeekDays(weekKey, areaID, areaList, true) : []);
+              }, 500);
             });
         })
         .catch(err => {
           console.log(err);
           setTimeout(() => {
-            return (!noRetry ? fetchWeekDays(weekKey, areaID, areaList, true) : []);
-          }, 1000);
+            return resolve(!noRetry ? fetchWeekDays(weekKey, areaID, areaList, true) : []);
+          }, 500);
         });
     
   })
