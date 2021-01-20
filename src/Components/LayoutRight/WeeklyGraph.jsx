@@ -48,8 +48,7 @@ function WeeklyGraph(props) {
             data: [{
                 color: "#e43f5a",
                 fillOpacity: 0.8,
-                type: "column", //change type to bar, line, area, pie, etc
-                //indexLabel: "{y}", //Shows y value on all Data Points
+                type: "column",
                 xValueFormatString: "Viikko #",
                 yValueFormatString: "0 Tapausta",
                 indexLabelFontColor: "#5A5757",

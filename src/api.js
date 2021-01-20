@@ -133,14 +133,14 @@ export function fetchLocalData(id, hcdId, noRetry) {
             console.log(err);
             setTimeout(() => { 
               return resolve(!noRetry ? fetchLocalData(id, hcdId, true) : null);
-            }, 200);
+            }, 50);
           })
       })
       .catch(err => {
         console.log(err);
         setTimeout(() => {
           return resolve(!noRetry ? fetchLocalData(id, hcdId, true) : null);
-        }, 200);
+        }, 50);
       })
   })
 }

@@ -15,7 +15,7 @@ function HcdStats(props) {
         showMap();
         calculateChange();
         getVaccinations();
-    });
+    }, [selectedHcd]);
 
     if(!props.selectedHcd) return(<div className="HcdStats"></div>);
 
@@ -63,7 +63,7 @@ function HcdStats(props) {
         } else {
             key = selectedHcd.key;
         }
-        
+
         const mapArea = document.getElementById(key);
         if(mapArea) mapArea.classList.add('show');
     }

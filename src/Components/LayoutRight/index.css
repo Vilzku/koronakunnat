@@ -268,10 +268,18 @@
     flex-flow: column;
   }
 
-  .LocalStats,
+  .LocalStats {
+    width: 100%;
+    min-height: 15rem;
+  }
+
   .HcdStats {
     width: 100%;
-    min-height: 400px;
+    min-height: 20rem;
+  }
+
+  .HcdStats #Map {
+    display: none;
   }
 
   .CumulativeGraph,
@@ -287,5 +295,22 @@
     top: auto;
     left: auto;
     transform: translate(0, 0);
+  }
+
+  .LocalStats h1,
+  .HcdStats h1 {
+    font-size: 2rem;
+  }
+  .LocalStats h2,
+  .HcdStats h2 {
+    font-size: 1.5rem;
+  }
+  .LocalStats h3,
+  .HcdStats h3 {
+    font-size: 1.17rem;
+  }
+  .LocalStats p,
+  .HcdStats p {
+    font-size: 1rem;
   }
 }

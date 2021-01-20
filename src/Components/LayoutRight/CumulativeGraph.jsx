@@ -12,10 +12,10 @@ function CumulativeGraph(props) {
         setup();
     }, [selectedCity])
 
-    if(!props.selectedCity) return(<div className="CumulativeGraph"></div>)
+    if(!selectedCity) return(<div className="CumulativeGraph"></div>)
 
     function setup() {
-        let weeklyHcdCases = props.selectedCity.weeklyHcdCases;
+        let weeklyHcdCases = selectedCity.weeklyHcdCases;
         let dps = [];
         let sum = 0;
         
