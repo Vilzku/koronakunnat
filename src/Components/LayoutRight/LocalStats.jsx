@@ -28,7 +28,7 @@ function LocalStats(props) {
         <div className="LocalStats">
             <h1>{ selectedCity.area }</h1>
             <p><strong>{ selectedCity.weeklyCases[105] === ".." ? "alle 5" : selectedCity.weeklyCases[105] }</strong> tartuntaa</p>
-            <p>joista <strong>{ change }</strong> uutta tartuntaa edellisen viikon alusta</p>
+            <p>joista <strong>{ change }</strong> uutta tapausta edellisen viikon alusta</p>
         </div>
     );
 }

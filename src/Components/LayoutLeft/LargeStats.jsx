@@ -2,6 +2,8 @@ import React from 'react';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSpinner } from '@fortawesome/free-solid-svg-icons'
+import { faSyringe } from '@fortawesome/free-solid-svg-icons'
+import { faViruses } from '@fortawesome/free-solid-svg-icons'
 
 function LargeStats(props) {
 
@@ -31,16 +33,16 @@ function LargeStats(props) {
         <div className="LargeStats">
 
             <div className="cases">
-                <span className="number">{ hcdList.length > 0 ? hcdList[14].cases : "" }</span>
-                <div className="title">Tapaukset</div>
+            <span className="number">{ hcdList.length > 0 ? hcdList[14].cases : "" }</span>
+            <div className="title"> <FontAwesomeIcon icon={faViruses} className="VirusesIcon" />Tapaukset</div>
             </div>
 
             <div className="vaccinations">
-                <span className="number">{ vaccinations.length > 0 ? vaccinations[0].shots : "--"}</span>
-                <div className="tooltip">?
-                    <span className="tooltiptext">Helsingin Sanomat { date }</span>
-                </div>
-                <div className="title">Rokotukset</div>
+            <span className="number">{ vaccinations.length > 0 ? vaccinations[0].shots : "--"}</span>
+            <div className="tooltip">?
+                <span className="tooltiptext">Helsingin Sanomat { date }</span>
+            </div>
+            <div className="title"><FontAwesomeIcon icon={faSyringe} className="SyringeIcon" />Rokotukset</div>
             </div>
 
         </div>
