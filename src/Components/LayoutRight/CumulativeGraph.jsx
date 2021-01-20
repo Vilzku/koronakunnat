@@ -12,7 +12,7 @@ function CumulativeGraph(props) {
         let dps = [];
         let sum = 0;
         
-        for(let i in weeklyHcdCases) {
+        for(let i in weeklyHcdCases) {       
             if(weeklyHcdCases[i] === undefined) continue;
             sum += parseInt(weeklyHcdCases[i])
             dps.push({x: parseInt(++i), y: parseInt(sum)})
@@ -25,12 +25,13 @@ function CumulativeGraph(props) {
             animationEnabled: true,
             exportEnabled: false,
             title: {
-                text:  "SHP korona tapaukset",
+                text:  "SHP tartunnat",
                 fontColor: "#e43f5a"
             },
     
             axisX:{
                 title: "Viikot",
+                titleFontColor: "#e43f5a",
                 tickColor: "#525252",
                 labelFontColor: "#e43f5a",
                 lineColor: "#525252"
@@ -47,7 +48,7 @@ function CumulativeGraph(props) {
                 fillOpacity: 0.6,
                 type: "area",
                 xValueFormatString: "Viikko #",
-                yValueFormatString: "#### Tapausta",
+                yValueFormatString: "0 Tapausta",
                 dataPoints: dps
                   
             }

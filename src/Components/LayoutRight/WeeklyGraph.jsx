@@ -36,6 +36,7 @@ function WeeklyGraph(props) {
             },
             axisX:{
                 title: "Viikot",
+                titleFontColor: "#e43f5a",
                 labelFontColor: "#e43f5a",
                 lineColor: "#e43f5a",
                 tickColor: "#525252"
@@ -52,7 +53,7 @@ function WeeklyGraph(props) {
                 type: "column", //change type to bar, line, area, pie, etc
                 //indexLabel: "{y}", //Shows y value on all Data Points
                 xValueFormatString: "Viikko #",
-                yValueFormatString: "#### Tapausta",
+                yValueFormatString: "0 Tapausta",
                 indexLabelFontColor: "#5A5757",
                 indexLabelPlacement: "outside",
                 dataPoints: dps
