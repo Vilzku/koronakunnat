@@ -19,8 +19,18 @@
   position: absolute;
   top: 0.75rem;
   right: 0.75rem;
-  padding: 0.25rem 0.5rem;
+  padding: 0.25rem 0.5rem 0.5rem 0.5rem;
   cursor: pointer;
+  color: #666666;
+  transition: color 0.15s ease-in-out;
+}
+
+.LayoutRight .helpIcon {
+  transform: translateX(0.3rem);
+}
+
+.LayoutRight .closeIcon:hover,
+.LayoutRight .helpIcon:hover {
   color: rgb(228, 63, 90);
 }
 
@@ -41,6 +51,10 @@
   margin: auto 0 auto auto;
 }
 
+.MainPage #number {
+  display: inline-block;
+}
+
 .MainPage .text h1 {
   font-size: 6rem;
 }
@@ -48,7 +62,7 @@
 .MainPage .Map {
   grid-area: map;
   height: 87vh;
-  margin: auto auto auto 0;
+  margin: 1rem auto auto 0;
 }
 
 .MainPage .Map * {
@@ -91,8 +105,13 @@
   margin-bottom: 0.5rem;
 }
 
-.MainPage .legend * {
-  margin: 0 0.25rem 0.25rem 1rem;
+.MainPage .legend .legendText {
+  margin: 0 0 0.5rem 0;
+}
+
+.MainPage .legend .iconText {
+  display: inline-block;
+  margin-right: 0.5rem;
 }
 
 /******************************************************************************/
@@ -138,12 +157,20 @@
   background-color: #162447;
 }
 
+.CumulativeGraph .canvasjs-chart-credit {
+  display: none;
+}
+
 /******************************************************************************/
 
 .WeeklyGraph {
   width: 50%;
   height: 50%;
   background-color: #162447;
+}
+
+.WeeklyGraph .canvasjs-chart-credit {
+  display: none;
 }
 
 /******************************************************************************/

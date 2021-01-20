@@ -9,6 +9,7 @@ import { faCircle } from '@fortawesome/free-solid-svg-icons'
 function MainPage(props) {
 
     const [changePast14days, setChangePast14days] = useState(0);
+    const [randomNumber, setRandomNumber] = useState(2846);
 
     let hcdList = props.hcdList;
 
@@ -58,17 +59,37 @@ function MainPage(props) {
                             }
                         }
                     });
-                }, i*30);
+                }, i*20);
 
                 
             }
         });
     }
 
+    async function rollingNumber() {
 
+        function timer(){
+            return new Promise(resolve => {setTimeout(resolve, 70)});
+         }
+
+        for(let i=0; i<100; i++) {
+            await timer();
+            if(changePast14days > 0) return;
+
+            let a = Math.round(Math.random() * 9).toString();
+            let b = Math.round(Math.random() * 9).toString();
+            let c = Math.round(Math.random() * 9).toString();
+            let d = Math.round(Math.random() * 9).toString();
+
+            setRandomNumber(a+b+c+d);
+        }
+    }
+
+    
 
     useEffect(() => {
         mapSetup();
+        rollingNumber();
     }, [hcdList]);
 
     return (
@@ -76,17 +97,17 @@ function MainPage(props) {
             <div className="text">
                 <h1>Korona<br/>
                     Psykoosi</h1>
-                <h2>{ changePast14days + " vahvistettua tartuntaa" }</h2>
+                <h2><div id="number">{ changePast14days>0 ? changePast14days : randomNumber }</div> vahvistettua tartuntaa</h2>
                 <p>viimeisen 14 vuorokauden aikana</p>
             </div>
             <Map className="Map" />
             <div className="legend">
                 <p className="legendText">Ilmaantuvuus – Tapausten määrä 100 000:ta asukasta kohti</p>
-                <FontAwesomeIcon icon={faCircle} className="circleIcon caseClass0" /> 0–10
-                <FontAwesomeIcon icon={faCircle} className="circleIcon caseClass10" /> 10–25
-                <FontAwesomeIcon icon={faCircle} className="circleIcon caseClass25" /> 25-100
-                <FontAwesomeIcon icon={faCircle} className="circleIcon caseClass100" /> 100-500
-                <FontAwesomeIcon icon={faCircle} className="circleIcon caseClass500" />  500+ 
+                <FontAwesomeIcon icon={faCircle} className="circleIcon caseClass0" /> <div className="iconText">0–10</div>
+                <FontAwesomeIcon icon={faCircle} className="circleIcon caseClass10" /> <div className="iconText">10–25</div>
+                <FontAwesomeIcon icon={faCircle} className="circleIcon caseClass25" /> <div className="iconText">25–100</div>
+                <FontAwesomeIcon icon={faCircle} className="circleIcon caseClass100" /> <div className="iconText">100–500</div>
+                <FontAwesomeIcon icon={faCircle} className="circleIcon caseClass500" />  <div className="iconText">500+</div> 
             </div>
         </div>
     );
