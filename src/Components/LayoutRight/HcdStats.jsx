@@ -58,11 +58,9 @@ function HcdStats(props) {
     return (
         <div className="HcdStats">
 
-            <div className="mapContainer">
-                <Map id="Map" />
-            </div>
-
             <h1 className="title">{ selectedHcd.area }</h1>
+
+            <Map id="Map" />
 
             <p className="weeklyCases"> <strong>{ selectedHcd.weeklyCases[105] }</strong> tartuntaa</p>
 
@@ -72,7 +70,7 @@ function HcdStats(props) {
                 <strong>{ " " + vaccinations.shots }</strong>
                 <FontAwesomeIcon icon={faSyringe} className="SyringeIcon" /> rokotusta annettu <strong>{ vaccinations.area }:n </strong> erikoisvastuualueella
             </p>
-            
+
         </div>
     );
 }

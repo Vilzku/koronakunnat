@@ -128,7 +128,7 @@
   margin-top: 4rem;
 }
 
-.LocalStats h2{
+.LocalStats h2 {
   margin-left: 4rem;
 }
 .LocalStats p {
@@ -156,13 +156,15 @@
   font-size: 1vw;
 }
 
-.HcdStats svg {
-  height: 20rem;
-  width: 20rem;
+.HcdStats #Map {
+  height: 30rem;
+  position: fixed;
+  right: 5rem;
+  top: 5rem;
 }
 
-.HcdStats path,
-.HcdStats polygon {
+.HcdStats #Map path,
+.HcdStats #Map polygon {
   opacity: 10%;
 }
 
