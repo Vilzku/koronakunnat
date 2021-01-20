@@ -36,6 +36,8 @@ function HcdStats(props) {
         const vacList = props.vaccinations;
         if(!vacList) return;
         if(!selectedHcd) return;
+
+        if(selectedHcd.key === "445131") setVaccinations({});
         
         for(let i=0; i<vacList.length; i++) {
             if(!vacList[i].hcd) continue;
@@ -51,7 +53,18 @@ function HcdStats(props) {
         if(!selectedHcd) return;
         let previous = document.getElementsByClassName('show');
         if(previous.length > 0) previous[0].classList.remove('show');
-        const mapArea = document.getElementById(selectedHcd.key);
+        let key;
+
+        // Map still sucks... missing two dhc
+        if(selectedHcd.key === "445175") {
+            key = "445155";
+        } else if(selectedHcd.key === "445190") {
+            key = "445224";
+        } else {
+            key = selectedHcd.key;
+        }
+        
+        const mapArea = document.getElementById(key);
         if(mapArea) mapArea.classList.add('show');
     }
 
@@ -66,10 +79,11 @@ function HcdStats(props) {
             </div>
             <p className="change">joista <strong>{ change } </strong> uutta tapausta edellisen viikon alusta</p>
             
-            <p className="vaccinations">
+            { !vaccinations.area ? "" : <p className="vaccinations">
                 <strong>{ " " + vaccinations.shots } </strong>
                 rokotusta annettu <strong>{ vaccinations.area }:n </strong> erikoisvastuualueella
-            </p>
+            </p> }
+            
 
             
         </div>

@@ -10,3 +10,10 @@
   overflow: hidden;
 }
 
+.loading {
+  overflow: hidden;
+  display: block;
+  text-align: center;
+  padding-top: 2rem;
+  font-size: 2rem;
+}

@@ -13,7 +13,7 @@ function LargeStats(props) {
     // Loading icon
     if(hcdList.length === 0 || vaccinations.length === 0) {
         return (
-            <div className="LargeStats fa-2x">
+            <div className="LargeStats loading">
                 <FontAwesomeIcon icon={faSpinner} spin className="LoadIcon" />
             </div>
         );
@@ -26,23 +26,33 @@ function LargeStats(props) {
         date = date.getUTCDate() + "." + (date.getUTCMonth()+1) + "." + date.getUTCFullYear();
     } else {
         date = "2021"
-
     }
 
     return (
         <div className="LargeStats">
 
             <div className="cases">
-            <span className="number"><FontAwesomeIcon icon={faViruses} className="VirusesIcon" /> { hcdList.length > 0 ? hcdList[14].cases : "" }</span>
-            <div className="title"> Tapaukset</div>
+                <div className="iconContainer">
+                    <FontAwesomeIcon icon={faViruses} className="VirusesIcon" />
+                </div>
+                <span className="number">
+                     { hcdList.length > 0 ? hcdList[14].cases : "" }
+                </span>
+                <div className="title"> Tapaukset</div>
             </div>
 
             <div className="vaccinations">
-            <span className="number"><FontAwesomeIcon icon={faSyringe} className="SyringeIcon" /> { vaccinations.length > 0 ? vaccinations[0].shots : "--"}</span>
-            <div className="tooltip">?
-                <span className="tooltiptext">Helsingin Sanomat { date }</span>
-            </div>
-            <div className="title">Rokotukset</div>
+                <div className="iconContainer">
+                    <FontAwesomeIcon icon={faSyringe} className="SyringeIcon" />
+                </div>
+                <span className="number">
+                     { vaccinations.length > 0 ? vaccinations[0].shots : "--"}
+                </span>
+                <div className="tooltipContainer">
+                    <span className="tooltip">?</span>
+                    <span className="tooltiptext">Helsingin Sanomat { date }</span>
+                </div>  
+                <div className="title">Rokotukset</div>
             </div>
 
         </div>

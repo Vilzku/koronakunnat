@@ -45,6 +45,15 @@ a:hover {
   color: #e43f5a;
 }
 
+.copyright {
+  cursor: default;
+}
+
+.copyright:hover {
+  border-bottom: none;
+  color: #666666;
+}
+
 ::-webkit-scrollbar {
   width: 12px;
 }

@@ -166,10 +166,10 @@
 }
 
 .HcdStats #Map {
-  height: 40%;
+  height: 42%;
   position: fixed;
   right: 5rem;
-  top: 5rem;
+  top: 2rem;
 }
 
 .HcdStats #Map path,

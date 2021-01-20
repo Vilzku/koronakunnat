@@ -10,7 +10,7 @@ function List(props) {
     // Loading icon
     if(cityList.length === 0) {
         return (
-            <div className="List fa-5x">
+            <div className="List loading">
                 <FontAwesomeIcon icon={faSpinner} spin className="LoadIcon"/> 
             </div> 
         );
@@ -29,7 +29,13 @@ function List(props) {
         <div className="List">
 
             <div className="inputBackground">
-                <input value={filter} onChange={onFilterChange} placeholder="Haku"></input>
+                <input 
+                    value={filter} 
+                    onChange={onFilterChange} 
+                    placeholder="Haku"
+                    type="search"
+                >
+                    </input>
             </div>
             
             <div className="list-items">
