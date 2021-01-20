@@ -173,7 +173,9 @@
 
 .HcdStats #Map path,
 .HcdStats #Map polygon {
-  opacity: 10%;
+  opacity: 20%;
+  stroke: #162447;
+  fill:rgb(228, 63, 90)
 }
 
 .HcdStats #Map .show {

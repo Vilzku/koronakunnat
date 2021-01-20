@@ -33,16 +33,16 @@ function LargeStats(props) {
         <div className="LargeStats">
 
             <div className="cases">
-            <span className="number">{ hcdList.length > 0 ? hcdList[14].cases : "" }</span>
-            <div className="title"> <FontAwesomeIcon icon={faViruses} className="VirusesIcon" />Tapaukset</div>
+            <span className="number"><FontAwesomeIcon icon={faViruses} className="VirusesIcon" />{ hcdList.length > 0 ? hcdList[14].cases : "" }</span>
+            <div className="title"> Tapaukset</div>
             </div>
 
             <div className="vaccinations">
-            <span className="number">{ vaccinations.length > 0 ? vaccinations[0].shots : "--"}</span>
+            <span className="number"><FontAwesomeIcon icon={faSyringe} className="SyringeIcon" />{ vaccinations.length > 0 ? vaccinations[0].shots : "--"}</span>
             <div className="tooltip">?
                 <span className="tooltiptext">Helsingin Sanomat { date }</span>
             </div>
-            <div className="title"><FontAwesomeIcon icon={faSyringe} className="SyringeIcon" />Rokotukset</div>
+            <div className="title">Rokotukset</div>
             </div>
 
         </div>
