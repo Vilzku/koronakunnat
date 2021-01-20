@@ -67,8 +67,8 @@ function HcdStats(props) {
             <p className="change">joista <strong>{ change } </strong> uutta tapausta edellisen viikon alusta</p>
             
             <p className="vaccinations">
-                <strong>{ " " + vaccinations.shots }</strong>
-                <FontAwesomeIcon icon={faSyringe} className="SyringeIcon" /> rokotusta annettu <strong>{ vaccinations.area }:n </strong> erikoisvastuualueella
+                <strong>{ " " + vaccinations.shots } </strong>
+                rokotusta annettu <strong>{ vaccinations.area }:n </strong> erikoisvastuualueella
             </p>
 
             
