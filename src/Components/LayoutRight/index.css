@@ -26,6 +26,7 @@
 }
 
 .LayoutRight .helpIcon {
+  display: none;
   transform: translateX(0.3rem);
 }
 
@@ -165,7 +166,7 @@
 }
 
 .HcdStats #Map {
-  height: 30rem;
+  height: 40%;
   position: fixed;
   right: 5rem;
   top: 5rem;
@@ -175,7 +176,7 @@
 .HcdStats #Map polygon {
   opacity: 20%;
   stroke: #162447;
-  fill:rgb(228, 63, 90)
+  fill: rgb(228, 63, 90);
 }
 
 .HcdStats #Map .show {
@@ -255,7 +256,7 @@
     font-weight: normal;
   }
 
-  .MainPage h2 #number{
+  .MainPage h2 #number {
     font-weight: bold;
   }
 
