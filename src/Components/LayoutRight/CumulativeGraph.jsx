@@ -61,10 +61,10 @@ function CumulativeGraph(props) {
     
     return (
         <div className="CumulativeGraph">
-
-            <h1>SHP:n kokonaistapaukset</h1>
-            <CanvasJSChart options = {options} />
-
+            <div className="container">
+                <h1>SHP:n kokonaistapaukset</h1>
+                <CanvasJSChart options = {options} />
+            </div>
 		</div>
     );
 }

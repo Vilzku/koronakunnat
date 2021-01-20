@@ -119,7 +119,7 @@
 
 .MainPage .legend .iconText {
   display: inline-block;
-  margin-right: 0.5rem;
+  margin-right: 0.8rem;
 }
 
 /******************************************************************************/
@@ -188,6 +188,14 @@
   background-color: #162447;
 }
 
+.CumulativeGraph .container {
+  margin: 0;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 .CumulativeGraph h1 {
   text-align: center;
 }
@@ -202,6 +210,14 @@
   width: 50%;
   height: 55%;
   background-color: #162447;
+}
+
+.WeeklyGraph .container {
+  margin: 0;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .WeeklyGraph h1 {
@@ -242,10 +258,23 @@
   }
 
   .LocalStats,
-  .HcdStats,
+  .HcdStats {
+    width: 100%;
+    min-height: 400px;
+  }
+
   .CumulativeGraph,
   .WeeklyGraph {
     width: 100%;
-    min-height: 400px; /* Fix this whenever there is content */
+    min-height: 30rem;
+  }
+
+  .WeeklyGraph .container,
+  .CumulativeGraph .container {
+    margin: auto;
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: translate(0, 0);
   }
 }

@@ -59,10 +59,10 @@ function WeeklyGraph(props) {
 
     return (
         <div className="WeeklyGraph">
-
-            <h1>SHP:n viikottaiset tapaukset</h1>
-            <CanvasJSChart options = {options} />
-
+            <div className="container">
+                <h1>SHP:n viikottaiset tapaukset</h1>
+                <CanvasJSChart options = {options} />
+            </div>
 		</div>
     );
 }
