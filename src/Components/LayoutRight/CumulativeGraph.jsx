@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 import CanvasJSReact from '../../Assets/canvasjs.react';
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 function CumulativeGraph(props) {
+    const [options, setOptions] = useState({});
+
+    const selectedCity = props.selectedCity;
+
+    useEffect(() => {
+        setup();
+    }, [selectedCity])
 
     if(!props.selectedCity) return(<div className="CumulativeGraph"></div>)
 
@@ -19,16 +26,11 @@ function CumulativeGraph(props) {
         }
         dps.pop()
         
-        const options = {
+        const ops = {
             theme: "dark2",
             backgroundColor: "#162447",
             animationEnabled: true,
             exportEnabled: false,
-            title: {
-                text:  "SHP tartunnat",
-                fontColor: "#e43f5a"
-            },
-    
             axisX:{
                 title: "Viikot",
                 titleFontColor: "#e43f5a",
@@ -54,14 +56,13 @@ function CumulativeGraph(props) {
             }
             ]
         }
-        return options;
+        setOptions(ops);
     }
-    
-    let options = setup();
     
     return (
         <div className="CumulativeGraph">
 
+            <h1>SHP:n kokonaistapaukset</h1>
             <CanvasJSChart options = {options} />
 
 		</div>

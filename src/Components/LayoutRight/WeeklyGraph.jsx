@@ -4,7 +4,6 @@ import CanvasJSReact from '../../Assets/canvasjs.react';
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 function WeeklyGraph(props) {
-
     const [options, setOptions] = useState({});
 
     const selectedCity = props.selectedCity;
@@ -30,10 +29,6 @@ function WeeklyGraph(props) {
             backgroundColor: "#162447",
             animationEnabled: true,
             exportEnabled: false,
-            title:{
-                text: "SHP viikottaiset tartunnat",
-                fontColor: "#e43f5a"
-            },
             axisX:{
                 title: "Viikot",
                 titleFontColor: "#e43f5a",
@@ -65,6 +60,7 @@ function WeeklyGraph(props) {
     return (
         <div className="WeeklyGraph">
 
+            <h1>SHP:n viikottaiset tapaukset</h1>
             <CanvasJSChart options = {options} />
 
 		</div>

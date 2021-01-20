@@ -118,7 +118,7 @@
 
 .LocalStats {
   width: 50%;
-  height: 50%;
+  height: 45%;
   background-color: #162447;
 }
 
@@ -140,7 +140,7 @@
 
 .HcdStats {
   width: 50%;
-  height: 50%;
+  height: 45%;
   background-color: #162447;
 }
 
@@ -176,8 +176,12 @@
 
 .CumulativeGraph {
   width: 50%;
-  height: 50%;
+  height: 55%;
   background-color: #162447;
+}
+
+.CumulativeGraph h1 {
+  text-align: center;
 }
 
 .CumulativeGraph .canvasjs-chart-credit {
@@ -188,8 +192,12 @@
 
 .WeeklyGraph {
   width: 50%;
-  height: 50%;
+  height: 55%;
   background-color: #162447;
+}
+
+.WeeklyGraph h1 {
+  text-align: center;
 }
 
 .WeeklyGraph .canvasjs-chart-credit {
