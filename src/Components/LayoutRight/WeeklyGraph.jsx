@@ -29,6 +29,9 @@ function WeeklyGraph(props) {
             backgroundColor: "#162447",
             animationEnabled: true,
             exportEnabled: false,
+            title:{
+                fontColor: "#e43f5a"
+            },
             axisX:{
                 title: "Viikot",
                 titleFontColor: "#e43f5a",

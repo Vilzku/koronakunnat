@@ -153,7 +153,7 @@
 }
 
 .HcdStats h1 {
-  font-size: 3vw;
+  font-size: 2vw;
   margin-top: 4rem;
   margin-left: 4rem;
 }
@@ -173,7 +173,9 @@
 
 .HcdStats #Map path,
 .HcdStats #Map polygon {
-  opacity: 10%;
+  opacity: 20%;
+  stroke: #162447;
+  fill:rgb(228, 63, 90)
 }
 
 .HcdStats #Map .show {
@@ -247,6 +249,14 @@
   .MainPage .text,
   .MainPage .Map {
     margin: auto;
+  }
+
+  .MainPage h2 {
+    font-weight: normal;
+  }
+
+  .MainPage h2 #number{
+    font-weight: bold;
   }
 
   .MainPage .legend {

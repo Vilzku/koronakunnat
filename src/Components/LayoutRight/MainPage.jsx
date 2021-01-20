@@ -96,8 +96,8 @@ function MainPage(props) {
             <div className="text">
                 <h1>Korona<br/>
                     Psykoosi</h1>
-                <h2><div id="number">{ changePast14days>0 ? changePast14days : randomNumber }</div> vahvistettua tartuntaa</h2>
-                <p>viimeisen 14 vuorokauden aikana</p>
+                <h2><div id="number">{ changePast14days>0 ? changePast14days : randomNumber }</div> vahvistettua tapausta</h2>
+                <p>viimeisen <strong>14</strong> vuorokauden aikana</p>
             </div>
             <Map className="Map" />
             <div className="legend">
