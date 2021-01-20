@@ -55,6 +55,14 @@
   display: inline-block;
 }
 
+.MainPage h2 {
+  font-weight: normal;
+}
+
+.MainPage h2 #number {
+  font-weight: bold;
+}
+
 .MainPage .text h1 {
   font-size: 6rem;
 }

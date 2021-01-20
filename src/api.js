@@ -391,9 +391,15 @@ export function fetchPast14days(areaID) {
                 if(key === 'key' || key === 'cases') continue;
                 for(let i in area[key]) {
                   if(!area[key][i]) break;
-                  if(area.cases.length === 14) area.cases.shift()
+                  if(area.cases.length === 15) area.cases.shift()
                   area.cases.push(area[key][i])
                 }
+              }
+
+              if(area.cases[14] === '0') {
+                area.cases.pop();
+              } else {
+                area.cases.shift()
               }
             }
 
