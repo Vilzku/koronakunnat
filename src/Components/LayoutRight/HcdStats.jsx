@@ -60,7 +60,7 @@ function HcdStats(props) {
 
             <h1 className="title">{ selectedHcd.area }</h1>
 
-            <p className="weeklyCases"> <strong>{ selectedHcd.weeklyCases[105] }</strong> tapaukset</p>
+            <p className="weeklyCases"> <strong>{ selectedHcd.weeklyCases[105] }</strong> tapausta</p>
             <div className="mapContainer">
                 <Map id="Map" />
             </div>

@@ -30,7 +30,6 @@ function WeeklyGraph(props) {
             animationEnabled: true,
             exportEnabled: false,
             title:{
-                text: "SHP viikottaiset tapaukset",
                 fontColor: "#e43f5a"
             },
             axisX:{
