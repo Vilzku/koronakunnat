@@ -20,13 +20,16 @@
   min-height: 9.1rem;
 }
 
-
 .LargeStats * {
   text-align: center;
 }
 
 .LargeStats .number {
   font-size: 3rem;
+}
+
+.LargeStats .vaccinations .number {
+  margin-left: 0.5rem;
 }
 
 .LargeStats .tooltip {
@@ -61,8 +64,6 @@
   opacity: 1;
   transition: opacity 0.5s;
 }
-
-
 
 .LargeStats.fa-2x {
   text-align: center;
@@ -131,7 +132,7 @@
 .List .inputBackground {
   position: sticky;
   top: 0;
-  background-color:#1f3365;
+  background-color: #1f3365;
 }
 
 .List input:focus {

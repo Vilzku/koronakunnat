@@ -75,7 +75,7 @@ function MainPage(props) {
             return new Promise(resolve => {setTimeout(resolve, 70)});
          }
 
-        for(let i=0; i<100; i++) {
+        for(let i=0; i<40; i++) {
             await timer();
             if(changePast14days > 0) return;
 
