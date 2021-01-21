@@ -1,15 +1,21 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { ReactComponent as Map } from '../../Assets/map.svg';
 
 function HcdStats(props) {
 
-    const selectedHcd = props.selectedHcd;
-    if(!props.selectedHcd) return(<div className="HcdStats"></div>);
+    const [change, setChange] = useState(0);
+    const [vaccinations, setVaccinations] = useState({});
 
-    showMap();
-    let change = calculateChange();
-    let vaccinations = getVaccinations();
+    const selectedHcd = props.selectedHcd;
+
+    useEffect(() => {
+        showMap();
+        calculateChange();
+        getVaccinations();
+    }, [selectedHcd]);
+
+    if(!props.selectedHcd) return(<div className="HcdStats"></div>);
 
     function calculateChange() {
         if(!selectedHcd) return;
@@ -21,7 +27,7 @@ function HcdStats(props) {
         }
         if(lastWeeks[0] === "..") lastWeeks[0] = '0';
         if(lastWeeks[1] === "..") lastWeeks[1] = '0';
-        return(parseInt(lastWeeks[0]) + parseInt(lastWeeks[1]));
+        setChange(parseInt(lastWeeks[0]) + parseInt(lastWeeks[1]));
     }
 
     function getVaccinations() {
@@ -29,13 +35,13 @@ function HcdStats(props) {
         if(!vacList) return;
         if(!selectedHcd) return;
 
-        if(selectedHcd.key === "445131") return;
+        if(selectedHcd.key === "445131") setVaccinations({});
         
         for(let i=0; i<vacList.length; i++) {
             if(!vacList[i].hcd) continue;
             vacList[i].hcd.forEach(area => {
                 if(area === selectedHcd.key) {
-                    return(vacList[i]);
+                    setVaccinations(vacList[i]);
                 }
             });
         }
@@ -67,7 +73,7 @@ function HcdStats(props) {
                 <h1 className="title">{ selectedHcd.area }</h1>
                 <p className="weeklyCases"> <strong>{ selectedHcd.weeklyCases[105] }</strong> tapausta</p>
                 <p className="change">joista <strong>{ change } </strong> uutta tapausta edellisen viikon alusta</p>
-                { !vaccinations ? "" : <p className="vaccinations">
+                { !vaccinations.area ? "" : <p className="vaccinations">
                     <strong>{ " " + vaccinations.shots } </strong>
                     rokotusta annettu <strong>{ vaccinations.area }:n </strong> erikoisvastuualueella
                 </p> }
