@@ -19,44 +19,27 @@ function CumulativeGraph(props) {
         let dps = [];
         let dps2 = [];
         let sum = 0;
-        let week = 0;
-        let label = "Tammikuu";
-        let label2 = "Maaliskuu";
-        let label3 = "Toukokuu";
-        let label4 = "Heinäkuu";
-        let label5 = "Syyskuu";
-        let label6 = "Marraskuu";
-        let label7 = "Tammikuu";
         
         for(let i in weeklyHcdCases) {       
-            if(weeklyHcdCases[i] === undefined) continue;
-            week = i;
-            if(week > 9) {
-                label = label2;
+            if(weeklyHcdCases[i] === undefined && i > 50) continue;
+            if(weeklyHcdCases[i] === undefined) weeklyHcdCases[i] = 0;
+
+            let label = "kys"
+            let week = i;
+            let year = 2020;
+            if(i>52) {
+                week = i - 53;
+                year = 2021;
             }
-            if(week > 18) {
-                label = label3;
-            }
-            if(week > 27) {
-                label = label4;
-            }
-            if(week > 35) {
-                label = label5;
-            }
-            if (week > 44) {
-                label = label6;
-            }   
-            
-            if (week > 53) {
-                label = label7;
-                week = 1
-            }
+
+            let day = (week-1) * 7 + 1;
+            let date = new Date(year, 0, day)
             
             sum += parseInt(weeklyHcdCases[i])
-            dps.push({x: parseInt(++i), y: parseInt(sum)})
-            dps2.push({label})
+            dps.push({x: date, y: parseInt(sum)})
         }
         dps.pop()
+
         
         const ops = {
             theme: "dark2",
@@ -64,17 +47,18 @@ function CumulativeGraph(props) {
             animationEnabled: true,
             exportEnabled: false,
             axisX:{
-                title: "Kuukaudet",
                 titleFontColor: "#e43f5a",
                 tickColor: "#525252",
                 labelFontColor: "#e43f5a",
-                lineColor: "#525252"
+                lineColor: "#525252",
+                intervalType: "month",
+                interval: 2
             },
             axisX2:{
                 titleFontColor: "#e43f5a",
                 tickColor: "#525252",
                 labelFontColor: "#e43f5a",
-                lineColor: "#525252"
+                lineColor: "#525252",
             },
             axisY: {
                 title: "",
@@ -87,14 +71,14 @@ function CumulativeGraph(props) {
                 color: "#e43f5a",
                 fillOpacity: 0.6,
                 type: "area",
-                xValueFormatString: "Viikko #",
+                xValueFormatString: "",
                 yValueFormatString: "0 Tapausta",
-                dataPoints: dps
-                  
+                dataPoints: dps,
             },
             {
                 fillOpacity: 0.6,
                 type: "area",
+                xValueFormatString: "MMMM",
                 dataPoints: dps2
             }
             ]
