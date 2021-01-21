@@ -29,7 +29,7 @@ function HcdStats(props) {
         if(!vacList) return;
         if(!selectedHcd) return;
 
-        if(selectedHcd.key === "445131") return({});
+        if(selectedHcd.key === "445131") return;
         
         for(let i=0; i<vacList.length; i++) {
             if(!vacList[i].hcd) continue;
@@ -67,7 +67,7 @@ function HcdStats(props) {
                 <h1 className="title">{ selectedHcd.area }</h1>
                 <p className="weeklyCases"> <strong>{ selectedHcd.weeklyCases[105] }</strong> tapausta</p>
                 <p className="change">joista <strong>{ change } </strong> uutta tapausta edellisen viikon alusta</p>
-                { !vaccinations.area ? "" : <p className="vaccinations">
+                { !vaccinations ? "" : <p className="vaccinations">
                     <strong>{ " " + vaccinations.shots } </strong>
                     rokotusta annettu <strong>{ vaccinations.area }:n </strong> erikoisvastuualueella
                 </p> }
