@@ -39,6 +39,7 @@ function CumulativeGraph(props) {
             backgroundColor: "#162447",
             animationEnabled: true,
             exportEnabled: false,
+            title: "‏‏‎ ‎",
             axisX:{
                 titleFontColor: "#e43f5a",
                 tickColor: "#525252",

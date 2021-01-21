@@ -27,7 +27,6 @@ function WeeklyGraph(props) {
             backgroundColor: "#162447",
             animationEnabled: true,
             exportEnabled: false,
-            height: 430,
             title:{
                 fontColor: "#e43f5a"
             },
