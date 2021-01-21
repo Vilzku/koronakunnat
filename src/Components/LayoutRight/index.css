@@ -126,50 +126,72 @@
 /******************************************************************************/
 
 .LocalStats {
-  width: 50%;
+  width: 40%;
   height: 45%;
   background-color: #162447;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: end;
+}
+
+.LocalStats .textContainer {
+  padding-right: 2rem;
+  height: 10vw;
+  border-right: solid 2px rgb(228, 63, 90);
+}
+
+.LocalStats h1,
+.LocalStats h2,
+.LocalStats p {
+  margin: 0;
+  margin-bottom: 1rem;
 }
 
 .LocalStats h1 {
   font-size: 3vw;
-  margin-left: 4rem;
-  margin-top: 4rem;
 }
 
-.LocalStats h2 {
-  margin-left: 4rem;
-}
 .LocalStats p {
-  margin-left: 4rem;
   font-size: 1vw;
 }
 
 /******************************************************************************/
 
 .HcdStats {
-  width: 50%;
+  width: 60%;
   height: 45%;
   background-color: #162447;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.HcdStats .textContainer {
+  margin-left: 2rem;
+  height: 10vw;
+}
+
+.HcdStats h1,
+.HcdStats h2,
+.HcdStats p {
+  margin: 0;
+  margin-bottom: 1rem;
 }
 
 .HcdStats h1 {
-  font-size: 2vw;
-  margin-top: 4rem;
-  margin-left: 4rem;
+  font-size: 3vw;
 }
 
-.HcdStats h2,
 .HcdStats p {
-  margin-left: 4rem;
   font-size: 1vw;
 }
 
 .HcdStats #Map {
   height: 42%;
   position: fixed;
-  right: 5rem;
-  top: 2rem;
+  right: 3rem;
+  top: 2vh;
 }
 
 .HcdStats #Map path,
@@ -271,11 +293,24 @@
   .LocalStats {
     width: 100%;
     min-height: 15rem;
+    padding-top: 4rem;
+    text-align: start;
+    display: block;
+  }
+
+  .LocalStats .textContainer {
+    margin-left: 2rem;
   }
 
   .HcdStats {
     width: 100%;
     min-height: 20rem;
+    display: block;
+    text-align: end;
+  }
+
+  .HcdStats .textContainer {
+    margin-right: 2rem;
   }
 
   .HcdStats #Map {
@@ -297,20 +332,12 @@
     transform: translate(0, 0);
   }
 
-  .LocalStats h1,
-  .HcdStats h1 {
-    font-size: 2rem;
+  .LocalStats h1 {
+    font-size: 3rem;
   }
-  .LocalStats h2,
-  .HcdStats h2 {
-    font-size: 1.5rem;
-  }
-  .LocalStats h3,
-  .HcdStats h3 {
-    font-size: 1.17rem;
-  }
+
   .LocalStats p,
   .HcdStats p {
-    font-size: 1rem;
+    font-size: 1.5rem;
   }
 }

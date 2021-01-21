@@ -1,30 +1,23 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 import CanvasJSReact from '../../Assets/canvasjs.react';
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 function CumulativeGraph(props) {
-    const [options, setOptions] = useState({});
 
     const selectedCity = props.selectedCity;
-
-    useEffect(() => {
-        setup();
-    }, [selectedCity])
-
     if(!selectedCity) return(<div className="CumulativeGraph"></div>)
+    let options = setup();
 
     function setup() {
         let weeklyHcdCases = selectedCity.weeklyHcdCases;
         let dps = [];
-        let dps2 = [];
         let sum = 0;
         
         for(let i in weeklyHcdCases) {       
             if(weeklyHcdCases[i] === undefined && i > 50) continue;
             if(weeklyHcdCases[i] === undefined) weeklyHcdCases[i] = 0;
 
-            let label = "kys"
             let week = i;
             let year = 2020;
             if(i>52) {
@@ -32,7 +25,7 @@ function CumulativeGraph(props) {
                 year = 2021;
             }
 
-            let day = (week-1) * 7 + 1;
+            let day = (week-1) * 7 + 10;
             let date = new Date(year, 0, day)
             
             sum += parseInt(weeklyHcdCases[i])
@@ -55,7 +48,6 @@ function CumulativeGraph(props) {
                 interval: 2
             },
             axisX2:{
-                titleFontColor: "#e43f5a",
                 tickColor: "#525252",
                 labelFontColor: "#e43f5a",
                 lineColor: "#525252",
@@ -74,16 +66,10 @@ function CumulativeGraph(props) {
                 xValueFormatString: "",
                 yValueFormatString: "0 Tapausta",
                 dataPoints: dps,
-            },
-            {
-                fillOpacity: 0.6,
-                type: "area",
-                xValueFormatString: "MMMM",
-                dataPoints: dps2
             }
             ]
         }
-        setOptions(ops);
+        return ops;
     }
     
     return (
