@@ -1,23 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
 import { ReactComponent as Map } from '../../Assets/map.svg';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSyringe } from '@fortawesome/free-solid-svg-icons'
 
 function HcdStats(props) {
 
-    const [change, setChange] = useState(0);
-    const [vaccinations, setVaccinations] = useState({});
-
     const selectedHcd = props.selectedHcd;
-
-    useEffect(() => {
-        showMap();
-        calculateChange();
-        getVaccinations();
-    }, [selectedHcd]);
-
     if(!props.selectedHcd) return(<div className="HcdStats"></div>);
+
+    showMap();
+    let change = calculateChange();
+    let vaccinations = getVaccinations();
 
     function calculateChange() {
         if(!selectedHcd) return;
@@ -29,7 +21,7 @@ function HcdStats(props) {
         }
         if(lastWeeks[0] === "..") lastWeeks[0] = '0';
         if(lastWeeks[1] === "..") lastWeeks[1] = '0';
-        setChange(parseInt(lastWeeks[0]) + parseInt(lastWeeks[1]));
+        return(parseInt(lastWeeks[0]) + parseInt(lastWeeks[1]));
     }
 
     function getVaccinations() {
@@ -37,13 +29,13 @@ function HcdStats(props) {
         if(!vacList) return;
         if(!selectedHcd) return;
 
-        if(selectedHcd.key === "445131") setVaccinations({});
+        if(selectedHcd.key === "445131") return({});
         
         for(let i=0; i<vacList.length; i++) {
             if(!vacList[i].hcd) continue;
             vacList[i].hcd.forEach(area => {
                 if(area === selectedHcd.key) {
-                    setVaccinations(vacList[i]);
+                    return(vacList[i]);
                 }
             });
         }

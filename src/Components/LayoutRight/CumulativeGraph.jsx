@@ -7,6 +7,7 @@ function CumulativeGraph(props) {
 
     const selectedCity = props.selectedCity;
     if(!selectedCity) return(<div className="CumulativeGraph"></div>)
+
     let options = setup();
 
     function setup() {
@@ -32,9 +33,8 @@ function CumulativeGraph(props) {
             dps.push({x: date, y: parseInt(sum)})
         }
         dps.pop()
-
         
-        const ops = {
+        const options = {
             theme: "dark2",
             backgroundColor: "#162447",
             animationEnabled: true,
@@ -69,7 +69,7 @@ function CumulativeGraph(props) {
             }
             ]
         }
-        return ops;
+        return options;
     }
     
     return (

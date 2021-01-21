@@ -137,7 +137,7 @@
 
 .LocalStats .textContainer {
   padding-right: 2rem;
-  height: 10vw;
+  height: 10.5vw;
   border-right: solid 2px rgb(228, 63, 90);
 }
 
@@ -145,7 +145,7 @@
 .LocalStats h2,
 .LocalStats p {
   margin: 0;
-  margin-bottom: 1rem;
+  margin-bottom: 1vw;
 }
 
 .LocalStats h1 {
@@ -169,14 +169,14 @@
 
 .HcdStats .textContainer {
   margin-left: 2rem;
-  height: 10vw;
+  height: 10.5vw;
 }
 
 .HcdStats h1,
 .HcdStats h2,
 .HcdStats p {
   margin: 0;
-  margin-bottom: 1rem;
+  margin-bottom: 1vw;
 }
 
 .HcdStats h1 {
@@ -196,13 +196,14 @@
 
 .HcdStats #Map path,
 .HcdStats #Map polygon {
-  opacity: 20%;
+  opacity: 10%;
   stroke: #162447;
   fill: rgb(228, 63, 90);
 }
 
 .HcdStats #Map .show {
   opacity: 100%;
+  fill: rgb(228, 63, 90);
 }
 
 /******************************************************************************/
@@ -333,6 +334,10 @@
   }
 
   .LocalStats h1 {
+    font-size: 3rem;
+  }
+
+  .HcdStats h1 {
     font-size: 3rem;
   }
 

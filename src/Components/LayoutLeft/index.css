@@ -25,7 +25,7 @@
   grid-template-areas:
     "icon number tooltip"
     "title title title";
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 0.1fr 1fr;
 }
 
 .LargeStats .number {

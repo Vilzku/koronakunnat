@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 import CanvasJSReact from '../../Assets/canvasjs.react';
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
@@ -7,6 +7,7 @@ function WeeklyGraph(props) {
 
     const selectedCity = props.selectedCity;
     if(!selectedCity) return(<div className="WeeklyGraph"></div>);
+
     let options = setup();
 
     function setup() {
@@ -16,12 +17,12 @@ function WeeklyGraph(props) {
         for(let i in weeklyHcdCases) {
             if(weeklyHcdCases[i] === undefined && i > 50) continue;
             if(weeklyHcdCases[i] === undefined) weeklyHcdCases[i] = 0;
-            
+
             dps.push({x: parseInt(++i), y: parseInt(weeklyHcdCases[i])})
         }
         dps.pop()
     
-        const ops = {
+        const options = {
             theme: "dark2",
             backgroundColor: "#162447",
             animationEnabled: true,
@@ -53,13 +54,13 @@ function WeeklyGraph(props) {
                 dataPoints: dps
             }]
         }
-        return ops;
+        return options;
     }
 
     return (
         <div className="WeeklyGraph">
             <div className="container">
-                <h1>SHP:n viikottaiset tapaukset</h1>
+                <h1>SHP:n viikoittaiset tapaukset</h1>
                 <CanvasJSChart options = {options} />
             </div>
 		</div>
