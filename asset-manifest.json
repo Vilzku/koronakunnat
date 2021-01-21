@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/koronapsykoosi/static/css/main.89008aeb.chunk.css",
+    "main.css": "/koronapsykoosi/static/css/main.896198a7.chunk.css",
     "main.js": "/koronapsykoosi/static/js/main.d144247b.chunk.js",
     "main.js.map": "/koronapsykoosi/static/js/main.d144247b.chunk.js.map",
     "runtime-main.js": "/koronapsykoosi/static/js/runtime-main.25443a00.js",
@@ -10,14 +10,14 @@
     "static/js/3.3f4c72a1.chunk.js": "/koronapsykoosi/static/js/3.3f4c72a1.chunk.js",
     "static/js/3.3f4c72a1.chunk.js.map": "/koronapsykoosi/static/js/3.3f4c72a1.chunk.js.map",
     "index.html": "/koronapsykoosi/index.html",
-    "static/css/main.89008aeb.chunk.css.map": "/koronapsykoosi/static/css/main.89008aeb.chunk.css.map",
+    "static/css/main.896198a7.chunk.css.map": "/koronapsykoosi/static/css/main.896198a7.chunk.css.map",
     "static/js/2.cc91279c.chunk.js.LICENSE.txt": "/koronapsykoosi/static/js/2.cc91279c.chunk.js.LICENSE.txt",
     "static/media/map.2ab8fd41.svg": "/koronapsykoosi/static/media/map.2ab8fd41.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.25443a00.js",
     "static/js/2.cc91279c.chunk.js",
-    "static/css/main.89008aeb.chunk.css",
+    "static/css/main.896198a7.chunk.css",
     "static/js/main.d144247b.chunk.js"
   ]
 }
