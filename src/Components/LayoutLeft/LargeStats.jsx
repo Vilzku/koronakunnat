@@ -46,7 +46,7 @@ function LargeStats(props) {
                     <FontAwesomeIcon icon={faSyringe} className="SyringeIcon" />
                 </div>
                 <span className="number">
-                     { vaccinations.length > 0 ? vaccinations[0].shots : "--"}
+                     { vaccinations.length > 0 ? vaccinations[5].shots : "--"}
                 </span>
                 <div className="tooltipContainer">
                     <span className="tooltip">?</span>
