@@ -47,7 +47,6 @@ function LargeStats(props) {
                 </div>
                 <span className="number">
                      { vaccinations.length > 0 ? vaccinations[6].shots : "--"}
-                     {console.log(vaccinations)}
                 </span>
                 <div className="tooltipContainer">
                     <span className="tooltip">?</span>
