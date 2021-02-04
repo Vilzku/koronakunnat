@@ -177,7 +177,7 @@ export function fetchVaccinationData(noRetry) {
         response.json()
           .then(data => {
 
-            for(let i=0; i<6; i++) {
+            for(let i=0; i<7; i++) {
               list.push(data.pop());
             }
 
